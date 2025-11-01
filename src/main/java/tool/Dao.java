@@ -1,21 +1,22 @@
 package tool;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 public class Dao {
-	private static DataSource ds;
 
-	public Connection getConnection() throws SQLException,NamingException {
-		if (ds == null) {
-			InitialContext ic = new InitialContext();
-			ds = (DataSource) ic.lookup("java:/comp/env/jdbc/rental_room");
-		}
-		return ds.getConnection();
-	}
+    public Connection getConnection() throws SQLException {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("PostgreSQL JDBC Driver not found.", e);
+        }
 
+        String url = System.getenv("DB_URL");
+        String user = System.getenv("DB_USER");
+        String password = System.getenv("DB_PASS");
+
+        return DriverManager.getConnection(url, user, password);
+    }
 }
