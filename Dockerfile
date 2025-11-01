@@ -7,4 +7,8 @@ RUN mvn clean package -DskipTests
 # ---- 2. Tomcatでデプロイ ----
 FROM tomcat:10.1-jdk21
 COPY --from=build /app/target/rental_room-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/rental_room.war
-CMD ["catalina.sh", "run"]
+
+# Renderが指定するPORT環境変数をTomcatに渡す
+ENV PORT=8080
+EXPOSE ${PORT}
+CMD ["sh", "-c", "catalina.sh run"]
