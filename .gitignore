@@ -3,3 +3,4 @@
 /.project
 /.settings/
 /src/main/webapp/META-INF/context.xml
+/src/main/webapp/WEB-INF/classes/
