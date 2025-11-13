@@ -11,7 +11,6 @@ import dao.ManagerDao;
 import tool.Action;
 
 public class ManagerLoginAction extends Action {
-
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -31,7 +30,7 @@ public class ManagerLoginAction extends Action {
 				request.setAttribute("error_message", "empty");
 				request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	
 				request.setAttribute("button", "管理者ログインへ");	
-				return "/common/input_error.jsp";
+				return "/common/manager_input_error.jsp";
 				//入力画面に戻す
 
 				//文字数・文字種のチェック
@@ -41,9 +40,8 @@ public class ManagerLoginAction extends Action {
 				request.setAttribute("error_message", "wrong");	
 				request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	
 				request.setAttribute("button", "管理者ログインへ");	
-				return "/common/input_error.jsp";
+				return "/common/manager_input_error.jsp";
 				//入力エラーページに戻す
-
 			}
 
 			ManagerDao dao = new ManagerDao();
@@ -60,27 +58,23 @@ public class ManagerLoginAction extends Action {
 				System.out.println(manager.getId());
 				System.out.println("3");
 				return "/guest/top.jsp";
+
 			}else {
 				System.out.println("4");
 				request.setAttribute("error_message", "wrong");	
 				request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	
 				request.setAttribute("button", "管理者ログインへ");	
-				return "/common/input_error.jsp";
-				
-				
+				return "/common/manager_input_error.jsp";
 			}
 		
-
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 			request.setAttribute("message", "システムエラーです");
 			request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	
 			request.setAttribute("button", "管理者ログインへ");	
-			return "/common/system_error.jsp";
+			return "/common/manager_system_error.jsp";
 
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			
 			System.out.println("5");
@@ -88,12 +82,7 @@ public class ManagerLoginAction extends Action {
 			request.setAttribute("message", "システムエラーです");
 			request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	
 			request.setAttribute("button", "管理者ログインへ");	
-			return "/common/system_error.jsp";
-		
+			return "/common/manager_system_error.jsp";
 		}
-	
-
-
 	}
-
 }

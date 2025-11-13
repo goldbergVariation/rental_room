@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<!DOCTYPE html>
 <html>
 <head>
-<title>管理者新規登録完了</title>
+<meta charset="UTF-8">
 <jsp:include page="/common/head.jsp" />
+
+<title>管理者新規登録</title>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>
+<main class="main-content">
 
 <h1>《管理者の新規登録》</h1>
 
@@ -27,7 +33,7 @@
 
     <p>パスワード（確認用）<br>
         <input type="password" id="confirm_password" name="confirm_password" minlength="4" maxlength="20" pattern="[a-zA-Z0-9]+" required>
-        ※4～20文字、半角英数字のみ、記号不可
+        <br>※4～20文字、半角英数字のみ、記号不可
     </p>
 
     <p id="passwordMessage" style="color:red;"></p>
@@ -62,6 +68,8 @@
     });
 </script>
 
-<jsp:include page="/common/footer.jsp"/>
+</main>
+
+<jsp:include page="/common/footer.jsp" />
 </body>
 </html>

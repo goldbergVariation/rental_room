@@ -5,18 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>物件登録完了</title>
 <jsp:include page="/common/head.jsp" />
+<title>物件登録完了</title>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>
+<main class="main-content">
 
-	<p> 登録が完了しました。 </p>
+	<h2> 登録が完了しました。 </h2>
 	
 	<form action="/rental_room/manager/property_register.jsp" method="post" >
 		<input type="submit" value="物件登録">
 	</form>
-
+</main>
 <jsp:include page="/common/footer.jsp"/>
 </body>
 </html>

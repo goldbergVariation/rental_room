@@ -11,25 +11,19 @@ public class ManagerLogoutAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response){
 
 		try {
-
 			HttpSession session = request.getSession();
 
 			if (session.getAttribute("account") != null) {
 				session.invalidate();//これでセッション全部消える
-				return "manager_logout.jsp";
+				return "/guest/manager_logout.jsp";
 
 			}
-			
-			
 		} catch (IllegalStateException e) {	
-
 			e.printStackTrace();
 		} catch (Exception e) {			
 			e.printStackTrace();
 		}
-
 		return "/common/system_error.jsp";
-
 	}
 
 }

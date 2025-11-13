@@ -27,13 +27,9 @@ public class ManagerSignupAction extends Action {
 				return "manager_signup_complete.jsp";
 			}
 
-			request.setAttribute("forward_page", "/rental_room/manager/manager_signup.jsp");
-			request.setAttribute("button", "管理者新規登録へ");
 			return "/common/system_error.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("forward_page", "/rental_room/manager/manager_signup.jsp");
-			request.setAttribute("button", "管理者新規登録へ");
 			return "/common/system_error.jsp";
 		}
 	}

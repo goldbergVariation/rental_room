@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>アパート・マンション賃貸システム</title>
 <jsp:include page="/common/head.jsp" />
+
 <style>
 .layout-group {
 	margin: 10px 0;
@@ -15,13 +16,18 @@
 .layout-group label {
 	margin-right: 15px;
 }
-.center-table {
-  margin: 0 auto;
-  border-collapse: collapse;
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  gap: 8px 20px;
 }
-.center-table td {
-  padding: 6px 10px;
+
+.city-grid label {
   text-align: left;
+}
+.bold {
+	font-weight: bold;
 }
 </style>
 </head>
@@ -29,22 +35,21 @@
 <body>
 <jsp:include page="/common/header.jsp" />
 
-<!-- ★メインコンテンツ 中村追記-->
 <main class="main-content">
 		<h1>
-			<span style="font-family: 'Shippori Mincho', serif;">物件検索</span>
+			物件検索
 		</h1>
 
 		<form action="/rental_room/guest/PropertySearch.action" method="post">
-			<p>
-				賃料(共益費込)<br> <label><input type="radio" name="priceNum" value="1"> 0〜50,000円</label><br> 
+			<p class="search-section">
+			<span class="bold">賃料(共益費込)</span><br> <label><input type="radio" name="priceNum" value="1"> 0〜50,000円</label><br> 
 				<label><input type="radio" name="priceNum" value="2"> 50,001〜80,000円</label><br> 
 				<label><input type="radio" name="priceNum" value="3"> 80,001〜100,000円</label><br> 
 				<label><input type="radio" name="priceNum" value="4"> 100,001円以上</label><br>
 			</p>
 
 			<p>
-				間取り（複数選択可）<br> 
+			<span class="bold">間取り（複数選択可）</span><br> 
 				<label><input type="checkbox" name="layout" value="1R"> 1R</label> 
 				<label><input type="checkbox" name="layout" value="1K"> 1K</label> 
 				<label><input type="checkbox" name="layout" value="1DK"> 1DK</label> 
@@ -57,10 +62,11 @@
 				<label><input type="checkbox" name="layout" value="3K"> 3K</label> 
 				<label><input type="checkbox" name="layout" value="3DK"> 3DK</label> 
 				<label><input type="checkbox" name="layout" value="3LDK"> 3LDK</label><br> 
-				<label><input type="checkbox" name="layout" value="4R以上"> 4R以上</label><br> </p>
-
-			地区<br>
-			<table  class="center-table">
+				<label><input type="checkbox" name="layout" value="4R以上"> 4R以上</label><br> 
+			</p>
+			<div class="search-block">
+			<span class="bold">地区</span><br>
+			<table  class="city-grid">
 				<tr>
 					<td><label><input type="radio" name="cityNum" value="1">中央区</label></td>
 					<td><label><input type="radio" name="cityNum" value="2">花見川区</label></td>
@@ -72,6 +78,7 @@
 					<td><label><input type="radio" name="cityNum" value="6">美浜区</label></td>
 				</tr>
 			</table>
+			</div><br>
 
 			<button type="submit">検索</button>
 			<input type="reset" value="リセット">

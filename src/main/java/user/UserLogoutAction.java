@@ -16,7 +16,7 @@ public class UserLogoutAction extends Action {
 
 			if (session.getAttribute("account") != null) {
 				session.invalidate();//これでセッション全部消える
-				return "user_logout.jsp";
+				return "/guest/user_logout.jsp";
 
 			}
 			
@@ -28,7 +28,7 @@ public class UserLogoutAction extends Action {
 			e.printStackTrace();
 		}
 
-		return "logout-error.jsp";
+		return "/common/system_error.jsp";
 
 	}
 

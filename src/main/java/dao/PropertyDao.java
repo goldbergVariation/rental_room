@@ -11,6 +11,18 @@ import bean.Property;
 import tool.Dao;
 
 public class PropertyDao extends Dao{
+	
+	// 物件再開停止
+	public boolean republishProperty(int id) throws Exception {
+		String sql = "update properties set status='空室' where property_id=? ";
+
+		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
+			st.setInt(1, id);
+
+			int line = st.executeUpdate();
+			return line > 0 ? true : false;
+		}
+	}
 
 	// 物件掲載停止
 	public boolean stopProperty(int id) throws Exception {

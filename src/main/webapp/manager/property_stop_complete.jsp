@@ -10,10 +10,11 @@
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>
+<main class="main-content">
 
 	<h1>物件掲載停止</h1>
 	<p> 物件掲載の停止が完了しました。 </p>
-
+</main>
 <jsp:include page="/common/footer.jsp"/>
 </body>
 </html>

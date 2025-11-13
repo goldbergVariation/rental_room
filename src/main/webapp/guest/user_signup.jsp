@@ -1,14 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<!DOCTYPE html>
 <html>
+
 <head>
+<meta charset="UTF-8">
+<title>利用者新規登録</title>
+
 <jsp:include page="/common/head.jsp" />
 </head>
 
 <body>
-<jsp:include page="/common/header.jsp"/>
+<%@include file="/common/header.jsp" %>
+<main class="main-content">
 
-<form id="registerForm" action="/rental_room/guest/UserCheck.action" method="post">
+
+	<h3>♪ 利用者新規登録 ♪</h3>
+	<form id="registerForm" action="/rental_room/guest/UserCheck.action" method="post">
     <p>ログインID<br>
         <input type="text" name="loginid" minlength="4" maxlength="20" pattern="[a-zA-Z0-9]+" required>
         <br>※4～20文字、半角英数字のみ、記号不可
@@ -26,7 +34,7 @@
 
     <p>パスワード（確認用）<br>
         <input type="password" id="confirm_password" name="confirm_password" minlength="4" maxlength="20" pattern="[a-zA-Z0-9]+" required>
-        ※4～20文字、半角英数字のみ、記号不可
+        <br>※4～20文字、半角英数字のみ、記号不可
     </p>
 
     <p id="passwordMessage" style="color:red;"></p>
@@ -61,6 +69,8 @@
     });
 </script>
 
-<jsp:include page="/common/footer.jsp"/>
+</main>
+
+<jsp:include page="/common/footer.jsp" />
 </body>
 </html>

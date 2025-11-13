@@ -5,14 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>物件検索結果</title>
 <jsp:include page="/common/head.jsp" />
+
+<title>物件検索結果</title>
+<style type="text/css">
+.property_name {
+    text-align: left;
+    white-space: normal;   /* 自動折り返し */
+    line-height: 1.6;      /* 行間 */
+    max-width: 300px;      /* 最大幅制御 */
+    word-break: break-word;     /* 長い単語でも折り返す */
+    overflow-wrap: break-word;  /* 古いブラウザ互換 */
+}
+</style>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>
+<main class="main-content">
 
-
-<h1><span style="font-family:'Shippori Mincho',serif;">物件検索結果</span></h1>
+<h1>物件検索結果</h1>
 
 <c:choose>
 	<c:when test="${empty properties_vacant and properties_vacant.size() == 0}">
@@ -21,7 +32,7 @@
 
 	<c:when test="${properties_vacant.size() >= 0}">
 	<h2><c:out value="${properties_vacant.size()}"/>件ヒットしました。</h2>
-		<table border="1" style="border-collapse: collapse; text-align: center;">
+		<table class="center-table">
 		  <tr>
 		    <th>物件名</th>
 		    <th>画像</th>
@@ -32,7 +43,7 @@
 		  </tr>
 		  <c:forEach var="property" items="${properties_vacant}">
 		    <tr>
-		      <td><a href="<c:url value='/guest/PropertyInfo.action'> <c:param name='id' value='${property.id}'/> </c:url>"> <c:out value="${property.name}"/></a> </td>
+		      <td class="property_name"><a href="<c:url value='/guest/PropertyInfo.action'> <c:param name='id' value='${property.id}'/> </c:url>"> <c:out value="${property.name}"/></a> </td>
 		      <td><a href="<c:url value='/guest/PropertyInfo.action'> <c:param name='id' value='${property.id}'/> </c:url>"> <img src="/rental_room/images/${property.imageName}" width="150" alt="not found"> </a> </td>
 		      <td><c:out value="${property.city}"/> </td>
 		      <td><c:out value="${property.layout}"/></td>
@@ -48,7 +59,7 @@
 
 	<c:when test="${properties_all.size() >= 0}">
 	<h2><c:out value="${properties_all.size()}"/>件ヒットしました。</h2>
-		<table border="1" style="border-collapse: collapse; text-align: center;">
+	<table class="center-table">
 		  <tr>
 		    <th>物件名</th>
 		    <th>画像</th>
@@ -60,7 +71,7 @@
 		  </tr>
 		  <c:forEach var="property" items="${properties_all}">
 		    <tr>
-		      <td><a href="<c:url value='/guest/PropertyInfo.action'> <c:param name='id' value='${property.id}'/> </c:url>"> <c:out value="${property.name}"/></a> </td>
+		      <td class="property_name"><a href="<c:url value='/guest/PropertyInfo.action'> <c:param name='id' value='${property.id}'/> </c:url>"> <c:out value="${property.name}"/></a> </td>
 		      <td><a href="<c:url value='/guest/PropertyInfo.action'> <c:param name='id' value='${property.id}'/> </c:url>"> <img src="/rental_room/images/${property.imageName}" width="150" alt="not found"> </a> </td>
 			  <c:choose>
 			  	<c:when test="${property.status == '掲載停止'}"> 
@@ -79,9 +90,12 @@
 	</c:when>
 </c:choose>
 
+<br>
+<form action="/rental_room/guest/top.jsp"  method="post">
+	<button type="submit">物件検索へ戻る</button>
+</form>
+</main>
 
-<a href="/rental_room/guest/top.jsp">物件検索へ戻る</a><br>
-
-<jsp:include page="/common/footer.jsp"/>
+<jsp:include page="/common/footer.jsp" />
 </body>
 </html>

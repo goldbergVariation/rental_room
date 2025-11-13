@@ -40,7 +40,7 @@ public class UserLoginAction extends Action {
             if (!loginId.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$") ||
                 !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")) {
 
-                request.setAttribute("error_message", "empty");
+                request.setAttribute("error_message", "wrong");
                 request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
                 request.setAttribute("button", "利用者ログインへ");
                 return "/common/input_error.jsp";

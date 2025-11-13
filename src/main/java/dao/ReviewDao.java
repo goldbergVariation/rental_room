@@ -9,8 +9,8 @@ import java.util.List;
 import bean.Review;
 import tool.Dao;
 
-public class ReviewDao extends Dao{
-	
+public class ReviewDao extends Dao {
+
 	public List<Review> getReviews(int propertyId) throws Exception {
 		String sql = "select * from reviews where property_id = ? order by created_at desc ";
 
@@ -33,5 +33,29 @@ public class ReviewDao extends Dao{
 			}
 		}
 	}
-	
+
+	public int insertReview(Review review, int userId, int propertyId) throws Exception {
+		String sql = "insert into reviews(comment,user_id,property_id)values(?,?,?) ";
+		int line = 0;
+
+		try (Connection con = getConnection();
+				PreparedStatement st = con.prepareStatement(sql);) {
+
+			//どこまでIDが来ているか、コンソールに表示
+	        System.out.println("ReviewDao");
+			System.out.println("review=" + review);
+			st.setString(1, review.getComment());
+			System.out.println("userId=" + userId);
+			st.setInt(2,userId);
+			System.out.println("propertyId=" + propertyId);
+			st.setInt(3,propertyId);
+			
+			line = st.executeUpdate();
+
+			return line;
+
+		}
+
+	}
+
 }

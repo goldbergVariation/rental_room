@@ -25,17 +25,19 @@ public class PropertyRegisterConfirmAction extends Action {
 			String address = request.getParameter("address");
 			
 			Part filePart = request.getPart("image");
-			if (filePart == null || filePart.getSize() == 0) {
+			String contentType = filePart.getContentType();
+			if (filePart == null || filePart.getSize() == 0 || contentType == null) {
 			    request.setAttribute("error_message", "empty");
 				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
+				request.setAttribute("button", "物件登録へ");
 			    return "/common/input_error.jsp";
 			}
-			String contentType = filePart.getContentType();
 			
-			if (contentType == null || !(contentType.equals("image/jpeg"))) {
-			    request.setAttribute("error_message", "empty");
+			if ( !(contentType.equals("image/jpeg"))) {
+			   request.setAttribute("error_message", "not_jpeg");
 				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
-			    return "/common/input_error.jsp";
+				request.setAttribute("button", "物件登録へ");
+			   return "/common/input_error.jsp";
 			}
 
 			String fileName = filePart.getSubmittedFileName();
@@ -49,18 +51,36 @@ public class PropertyRegisterConfirmAction extends Action {
 					System.out.println("未入力があります");
 					request.setAttribute("error_message", "empty");
 					request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
+					request.setAttribute("button", "物件登録へ");
 					return "/common/input_error.jsp";
 				}
 			}
 			int price = Integer.parseInt(priceStr);
 			
-			if(name.length() > 50 || price > 10000000 || info.length() > 500 || pet.length() > 10 || city.length() > 10 || address.length() > 50) {
+			// 入力が小さいときのバリデーション
+			if(name.length() <= 0 || price < 0 || info.length() <= 0 || pet.length() <= 0 || city.length() <= 0 || address.length() <= 0) {
+				request.setAttribute("error_message", "wrong");
+				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
+				return "/common/input_error.jsp";
+			}
+			
+			// 入力が大きいときのバリデーション
+			if(name.length() > 50 || price > 10000000 || info.length() > 500 || pet.length() > 10 || city.length() > 10 ||
+					address.length() > 50 || layout.length() > 10 || fileName.length() > 100) {
 				System.out.println("入力文字数過多");
 				request.setAttribute("error_message", "wrong");
+				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
+				request.setAttribute("button", "物件登録へ");
 				return "/common/input_error.jsp";
 			}
 
+			request.setAttribute("fileName", fileName);
+			
+			// 	画像ファイル名に現在時刻(ミリ秒単位)とアンダーバーを追加して名前の衝突を防ぐ
+			fileName = System.currentTimeMillis() + "_" + fileName;
+
 			String savePath = request.getServletContext().getRealPath("/images/") + fileName;
+			System.out.println(savePath);
 			filePart.write(savePath);
 
 			System.out.println(2);

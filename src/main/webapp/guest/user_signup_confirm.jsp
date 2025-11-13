@@ -1,24 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="jakarta.tags.core" %>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>利用者新規登録の確認画面</title>
-<jsp:include page="/common/head.jsp" />
+<meta charset="UTF-8">
+<title>利用者の新規登録の確認</title>
+
+<jsp:include page="/common/head.jsp" />	<!-- ✅ CSSなど共通設定を読み込む -->
 
 </head>
 
 <body>
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/common/header.jsp" />	
+<main class="main-content">	<!-- 装飾設定の読み込み -->
 
-
+<table class="center-table">
 	<tr>
-	<td>ログインID：<%=(String) session.getAttribute("loginId") %></td><br>
-	<td>ニックネーム：<%=(String) session.getAttribute("nickName") %></td><br>
-	<td>パスワード：<%=(String) session.getAttribute("hidePass") %> </td><br>
-	
+		<td>ログインID：<c:out value="${sessionScope.loginId}"/></td>
 	</tr>
-
+	<tr>
+		<td>ニックネーム：<c:out value="${sessionScope.nickName}"/></td>
+	</tr>
+	<tr>
+		<td>パスワード：<c:out value="${sessionScope.hidePass}"/></td>
+	</tr>
+</table>
 
 <p>この内容で登録しますか？</p>
 
@@ -29,15 +35,16 @@
     <input type="hidden" name="nickname" value="<%= (String) session.getAttribute("nickName") %>">
     <input type="hidden" name="password" value="<%= (String) session.getAttribute("password") %>">
 
-   
     <input type="submit" value="はい"> 
-</form>
+</form><br>
 
 <form action="user_signup.jsp" method="get">
     <input type="submit" value="いいえ">
 </form>
 
-<jsp:include page="/common/footer.jsp"/>
+</main>
+
+<jsp:include page="/common/footer.jsp" />
 
 </body>
 </html>

@@ -41,13 +41,20 @@ public class PropertyRegisterAction extends Action {
 			}
 			int price = Integer.parseInt(priceStr);
 			
+			// 入力が小さいときのバリデーション
+			if(name.length() <= 0 || price < 0 || info.length() <= 0 || pet.length() <= 0 || city.length() <= 0 || address.length() <= 0) {
+				request.setAttribute("error_message", "wrong");
+				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
+				return "/common/input_error.jsp";
+			}
+
+			// 入力が大きいときのバリデーション
 			if(name.length() > 50 || price > 10000000 || info.length() > 500 || pet.length() > 10 || city.length() > 10 || address.length() > 50) {
 				System.out.println("入力文字数過多");
 				request.setAttribute("error_message", "wrong");
 				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
 				return "/common/input_error.jsp";
 			}
-			
 			
 			Property property = new Property();
 			property.setName(name);

@@ -24,7 +24,7 @@ public class PropertyInfoAction extends Action {
 			if (idStr == null || idStr.trim().isBlank()) {
 				System.out.println("search info result null");
 				request.setAttribute("message", "該当する物件が見つかりませんでした");
-				return "/guest/system_error.jsp";
+				return "/common/system_error.jsp";
 			}
 			int id = Integer.parseInt(idStr);
 
@@ -35,7 +35,7 @@ public class PropertyInfoAction extends Action {
 			if (property == null) {
 				System.out.println("search info result null");
 				request.setAttribute("message", "該当する物件が見つかりませんでした");
-				return "/guest/system_error.jsp";
+				return "/common/system_error.jsp";
 			}
 
 			System.out.println("search property info success");
