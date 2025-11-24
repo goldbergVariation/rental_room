@@ -1,0 +1,324 @@
+@charset "UTF-8";
+
+/* ===============================
+   構造（すべて上に）
+   display / position / margin / padding / width / height / flex / grid /
+   font-family / font-size / font-weight / text-align / border-radius /
+   overflow / z-index / transition / pointer-events / etc.
+   ================================ */
+
+/* body：構造 */
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: block; /* レイアウト基盤（元は flex ならここで指定） */
+}
+
+/* .pokedex-header：構造 */
+.pokedex-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+/* .pokedex-header nav p：構造 */
+.pokedex-header nav p {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+}
+
+/* ヘッダーナビ：構造 */
+.header-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* .led：構造 */
+.led {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+/* .soft-yellow：構造 */
+/*（なし）*/
+
+/* .pokedex-header h1, .pokedex-header a：構造 */
+.pokedex-header h1,
+.pokedex-header a {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-decoration: none; /* 装飾は色ブロックで制御する想定 */
+}
+
+/* .main-content：構造 */
+.main-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* .city-grid：構造 */
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  gap: 8px 20px;
+}
+
+/* .city-grid label：構造 */
+.city-grid label {
+  text-align: left;
+}
+
+.table-wrapper td {
+	min-width:50px;
+}
+
+/* .center-table：構造 */
+.center-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  min-width: 720px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* .center-table th：構造 */
+.center-table th {
+  font-weight: 600;
+  padding: 10px;
+}
+
+/* .center-table td：構造 */
+.center-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* .center-table tr:last-child td：構造 */
+.center-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* .center-table tbody tr:hover：構造 */
+.center-table tbody tr:hover {
+  transition: background 0.15s;
+}
+
+/* .center-table a：構造 */
+.center-table a {
+  font-weight: 500;
+}
+
+/* button, input（共通）：構造 */
+button,
+input[type="submit"],
+input[type="reset"] {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+/* p 館フッター構造 */
+.pokedex-footer {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* .pokedex-footer a：構造 */
+.pokedex-footer a {
+  margin: 0 10px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  text-decoration: none; /* 装飾は色ブロックで制御 */
+}
+
+/* .back-to-top：構造 */
+.back-to-top {
+  display: inline-block;
+  text-decoration: none; /* 色ブロックで制御したい場合はここを空に */
+  padding: 5px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  margin: 10px;
+}
+
+/* .back-to-top:hover：構造 */
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 255, 200, 0.6); /* 視覚効果は構造扱いでOK */
+}
+
+/* .search-section：構造 */
+.search-section {
+  text-align: center;
+}
+
+/* .search-section label：構造 */
+.search-section label {
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+  margin: 3px 0;
+}
+
+/* ===============================
+   色（すべて下に）
+   background / color / border-* / box-shadow / opacity / filter /
+   text-decoration (見た目) / etc.
+   ================================ */
+
+/* body：色 */
+/* ベース（シックでモダン） */
+body {
+  /* 背景：やや冷たいグレージュの微妙なグラデーション */
+  background: linear-gradient(180deg, #f7f8f9 0%, #eef1f4 100%);
+  color: #2e3640;                     /* 読みやすいダークスレート */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ヘッダー：ガラス風（半透明+ブラー）でモダンに */
+.pokedex-header {
+  /* 背景（半透明ホワイト）＋奥行き */
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(6px) saturate(120%);
+
+  /* 薄い線と柔らかい影で浮かせる */
+  border-bottom: 1px solid rgba(46,54,64,0.06);
+  box-shadow: 0 6px 18px rgba(46,54,64,0.06);
+
+  /* テキスト色は濃すぎないが明瞭に */
+  color: #1f2933;
+
+  /* レイアウト（既存のまま） */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+/* ヘッダー内リンク（ホバーで控えめにアクセント） */
+.pokedex-header a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .18s ease, transform .12s ease;
+}
+.pokedex-header a:hover {
+  color: #1b6b5a; /* 抑えたグリーン系のアクセント */
+  transform: translateY(-1px);
+}
+/* .pokedex-header nav p：色（なし） */
+
+/* ヘッダーナビ：色（なし） */
+
+/* 小さな装飾（LED など） */
+.led {
+  background: linear-gradient(135deg, #9fcf9a 0%, #5f9b70 100%);
+  box-shadow: 0 3px 8px rgba(95,155,112,0.18);
+}
+
+/* .soft-yellow：色 */
+.soft-yellow {
+  background: #d5e4b6; /* セージ寄りの柔らかい黄緑 */
+}
+
+/* .pokedex-header h1, .pokedex-header a：色 */
+.pokedex-header h1 {
+  color: #607d6e; /* 落ち着いたグリーングレー */
+}
+
+/* .main-content：色（なし） */
+
+/* .city-grid：色（なし） */
+
+/* .center-table：色 */
+.center-table {
+  background: #faf9f5; /* ほぼ白、でも冷たくない */
+  color: #444;
+  border: 1px solid #d6d6d6;
+}
+
+/* .center-table th：色 */
+.center-table th {
+  background: #f1f3f0; /* やさしいグレー */
+  color: #607d6e; /* セージ寄り */
+  border-bottom: 1px solid #d0d5cf;
+}
+
+/* .center-table td：色 */
+.center-table td {
+  border-bottom: 1px solid #ececec;
+}
+
+/* .center-table tr:last-child td：色（なし） */
+
+/* .center-table tbody tr:hover：色 */
+.center-table tbody tr:hover {
+  background: #f7f9f8; /* うっすら変化 */
+}
+
+/* .center-table a：色 */
+.center-table a {
+  color: #5b8572;
+  text-decoration: none;
+}
+
+/* .center-table a:hover：色 */
+.center-table a:hover {
+  text-decoration: underline;
+}
+
+/* button, input（共通）：色 */
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: rgb(58, 115, 160);
+  color: #fff;
+}
+
+/* button hover：色 */
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background: rgb(10, 70, 128); 
+}
+
+/* .pokedex-footer：色 */
+.pokedex-footer {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(6px) saturate(120%);
+
+  border-top: 1px solid #d0d5cf;
+  color: #666;
+}
+
+/* .pokedex-footer a：色 */
+.pokedex-footer a {
+  color: #1f2933;
+  text-decoration: none;
+}
+
+/* .pokedex-footer a:hover：色 */
+.pokedex-footer a:hover {
+  opacity: 0.7;
+}
+
+/* .search-section：色（なし） */
+
+/* .search-section label：色（なし） */
