@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<c:url value='/css/manager_style.css' />">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 .login-box {
   max-width: 260px;
