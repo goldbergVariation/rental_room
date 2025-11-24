@@ -5,3 +5,10 @@
 /src/main/webapp/META-INF/context.xml
 /src/main/webapp/WEB-INF/classes/
 /src/main/webapp/WEB-INF/lib/
+/.metadata/
+/target/
+/bin/
+/build/
+.project
+*.log
+*.env
