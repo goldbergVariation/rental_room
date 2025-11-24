@@ -8,9 +8,6 @@
 <title>アパート・マンション賃貸システム</title>
 <jsp:include page="/common/head.jsp" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 <style>
 .layout-group {
 	margin: 10px 0;
