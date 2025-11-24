@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>アパート・マンション賃貸システム</title>
 <jsp:include page="/common/head.jsp" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
