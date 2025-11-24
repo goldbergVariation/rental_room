@@ -26,20 +26,6 @@ body {
     background-blend-mode: lighten;
   }
 
-/* 背景：ちはなちゃん（右下に透けて配置） */
-body::before {
-  content: "";
-  position: absolute;
-  bottom: 10vh; /* キャラクター画像がフッターと重ならないようにする */
-  right: 40px;
-  width: 260px;
-  height: 260px;
-  background: url("../images/chibashi_chihanacyann_kihonn.jpg") no-repeat center/contain;  
-  opacity: 0.12;
-  filter: blur(0.5px);
-  pointer-events: none;
-  z-index: 0;
-}
 
 /* ===============================
    ヘッダー装飾

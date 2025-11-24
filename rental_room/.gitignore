@@ -1,10 +1,1 @@
-/.settings/
-/.metadata/
-/target/
 /bin/
-/.classpath
-/build/
-.project
-*.log
-*.env
-src/main/webapp/META-INF/context.xml
