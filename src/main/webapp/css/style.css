@@ -17,15 +17,6 @@ body {
   /* 背景レイヤー1：グラデーション */
   background: linear-gradient(120deg, #fffde7, #e8f5e9); /* 淡い黄〜緑のグラデーション */
   
-  /* 背景パターン2（葉っぱ模様を重ねる：グラデーション） */
-  background-image: 
-        url("../images/leaves.jpg"),
-        linear-gradient(135deg, #fffde7, #e8f5e9);
-    background-repeat: repeat, no-repeat;
-    background-size: 500px 500px, cover;
-    background-blend-mode: lighten;
-  }
-
 
 /* ===============================
    ヘッダー装飾
@@ -236,7 +227,7 @@ input[type="reset"]:hover {
 /* Footer — gradient + grid layout (center back-to-top, right cancel) */
 .pokedex-footer {
   /* 色 */
-  background: linear-gradient(90deg, #fff9c4, #c8e6c9);
+  background: #fff9c4;
   border-top: 2px solid #dcedc8;
   color: #333;
 
@@ -265,7 +256,7 @@ input[type="reset"]:hover {
   justify-self: center;
 
   /* 色 */
-  background-color: #fef3a6;  /* パステルイエロー */
+  background-color: #dcf8c6;
   color: #555;
   box-shadow: 0 2px 5px rgba(200, 230, 201, 0.5);
 
