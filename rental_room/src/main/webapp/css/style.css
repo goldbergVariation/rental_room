@@ -1,0 +1,343 @@
+@charset "UTF-8";
+
+/* ===============================
+   全体ベース（背景3層構造）
+=============================== */
+body {
+  display: flex;/* display: flex と flex-direction: column で縦並び */
+  flex-direction: column;
+  min-height: 100vh; /* 画面の高さを最低限確保 */
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #444;
+  overflow-x: hidden;
+
+  /* 背景レイヤー1：グラデーション */
+  background: linear-gradient(120deg, #fffde7, #e8f5e9); /* 淡い黄〜緑のグラデーション */
+  
+  /* 背景パターン2（葉っぱ模様を重ねる：グラデーション） */
+  background-image: 
+        url("../images/leaves.jpg"),
+        linear-gradient(135deg, #fffde7, #e8f5e9);
+    background-repeat: repeat, no-repeat;
+    background-size: 500px 500px, cover;
+    background-blend-mode: lighten;
+  }
+
+
+/* ===============================
+   ヘッダー装飾
+=============================== */
+.pokedex-header {
+  display: flex;
+  background: #fff9c4;
+  border-bottom: 3px solid #dcedc8;
+  box-shadow: 0 2px 8px rgba(200, 230, 201, 0.5);
+  justify-content: flex-start;
+  align-items: center;
+    z-index: 1;/* 背景の上に表示 */
+  padding: 14px 20px;
+}
+/* 🔽 追加 */
+.header-buttons {
+  margin-left: auto; /* 左側の要素を押し出して右寄せにする */
+  display: flex; /* ボタンを横並びに */
+}
+/* .pokedex-header nav p：構造 */
+.pokedex-header nav p {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+}
+/* .led：構造 */
+.led {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+    box-shadow: 0 0 10px rgba(255, 241, 118, 0.8);
+}
+/* .pokedex-header h1, .pokedex-header a：構造 */
+.pokedex-header a {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-decoration: none; /* 装飾は色ブロックで制御する想定 */
+}
+
+.soft-yellow {
+  background: #ffeb3b;
+}
+
+/* .pokedex-header h1：構造 */
+.pokedex-header h1 {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+/* タイトルリンク（MyRental）の調整 */
+.site-title {
+  color: #8bc34a;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.site-title:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   ヘッダーナビゲーション
+=============================== */
+.header-nav {
+  margin-left: auto; /* 左側を押して右端へ寄せる！ */
+  display: flex; /* 中のボタンや文字を横並びに */
+  align-items: center; /* 縦位置を中央揃え */
+  gap: 10px; /* ボタン間のすき間を調整 */
+}
+
+.header-nav span {
+  font-size: 0.9em;
+  color: #555;
+}
+
+
+/* ===============================
+   ヘッダーボタン（ログイン、新規登録）
+=============================== */
+
+.header-btn:first-of-type {
+  margin-left: auto;/* ボタンを右端に配置 */
+}
+
+.header-btn {
+  display: inline-block;
+  background-color: #dcf8c6; /* 💚パステルグリーン系に変更 */
+  color: #444;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;/* 丸み */
+  margin: 0 6px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(200, 230, 201, 0.6);
+}
+/* マウスを乗せたときの効果 */
+.header-btn:hover {
+	background-color: #e8fcd6; /* 少し明るく変化 */
+	box-shadow: 0 0 10px rgba(200, 255, 200, 0.6);
+	transform: translateY(-2px); /* ふんわり浮く */
+}
+
+
+/* ログインボタン（ミント） */
+.header-btn.login {
+  background-color: #dcf8c6;
+}
+.header-btn.login:hover {
+  background-color: #e8fcd6;
+  box-shadow: 0 0 10px rgba(200, 255, 200, 0.6);
+  transform: translateY(-2px);
+}
+
+/* 新規登録ボタン（ミント） */
+.header-btn.register {
+  background-color: #dcf8c6;
+}
+.header-btn.register:hover {
+  background-color: #e8fcd6;
+  box-shadow: 0 0 10px rgba(200, 255, 200, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   メイン領域
+=============================== */
+.main-content {
+  flex: 1; /* 残り高さを自動で埋める：フッターを最下段へ固定 */
+  text-align: center;
+  padding: 50px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ===== table base ===== */
+.center-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  min-width: 620px;
+  font-size: 0.95rem;
+  color: #444;
+  background: #faf9f5; /* ほぼ白、でも冷たくない */
+  border: 1px solid #d6d6d6;
+  border-radius: 6px;
+  overflow: hidden; /* 角丸を有効に */
+}
+
+/* ===== header ===== */
+.center-table th {
+  background: #f1f3f0;       /* やさしいグレー */
+  color: #607d6e;            /* セージ寄り */
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 1px solid #d0d5cf;
+}
+
+/* ===== cell ===== */
+.center-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ececec;
+  text-align: center;
+}
+
+/* 最終行の下ボーダーを抑える */
+.center-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== hover ===== */
+.center-table tbody tr:hover {
+  background: #f7f9f8;   /* うっすら変化 */
+  transition: background 0.15s;
+}
+
+/* ===== link ===== */
+.center-table a {
+  color: #5b8572;
+  text-decoration: none;
+  font-weight: 500;
+}
+.center-table a:hover {
+  text-decoration: underline;
+}
+/* --------- Buttons --------- */
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: #7ca987; /* セージっぽい緑 */
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background: #638b70;
+}
+
+
+/* Footer — gradient + grid layout (center back-to-top, right cancel) */
+.pokedex-footer {
+  /* 色 */
+  background: linear-gradient(90deg, #fff9c4, #c8e6c9);
+  border-top: 2px solid #dcedc8;
+  color: #333;
+
+  /* 構造 (grid) */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 左余白 / 中央要素 / 右要素 */
+  align-items: center;
+  position: relative;
+  padding: 15px;
+  gap: 8px;
+}
+
+/* 汎用リンクスタイル（見た目） */
+.pokedex-footer a {
+  margin: 0 10px;
+  font-weight: 500;
+  transition: opacity 0.2s ease, transform 0.12s ease;
+  text-decoration: none; /* 装飾はここで制御 */
+  color: inherit;
+}
+
+/* --- back-to-top を中央セルに配置 --- */
+.pokedex-footer .back-to-top {
+  /* 構造 */
+  grid-column: 2;
+  justify-self: center;
+
+  /* 色 */
+  background-color: #fef3a6;  /* パステルイエロー */
+  color: #555;
+  box-shadow: 0 2px 5px rgba(200, 230, 201, 0.5);
+
+  /* 見た目／操作性 */
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+/* back-to-top hover / focus */
+.pokedex-footer .back-to-top:hover,
+.pokedex-footer .back-to-top:focus-visible {
+  background-color: #fff8c8;
+  box-shadow: 0 0 10px rgba(255, 255, 200, 0.6);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* --- 退会フォームを右端セルに配置 --- */
+.pokedex-footer form {
+  /* 構造 */
+  grid-column: 3;
+  justify-self: end;
+  margin: 0; /* 既存の margin-left:auto 等を除去すること */
+}
+
+/* 退会ボタン（見た目） */
+.pokedex-footer .cancel-link {
+  display: inline-block;
+  /* 色 */
+  background-color: #fef3a6;
+  color: #555;
+  box-shadow: 0 2px 5px rgba(200, 230, 201, 0.5);
+
+  /* 構造 / 見た目 */
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* cancel hover / focus */
+.pokedex-footer .cancel-link:hover,
+.pokedex-footer .cancel-link:focus-visible {
+  background-color: #fff8c8;
+  box-shadow: 0 0 10px rgba(255, 255, 200, 0.6);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* 小さい画面のためのレスポンシブ：縦並びにして中央揃え */
+@media (max-width: 600px) {
+  .pokedex-footer {
+    grid-template-columns: 1fr; /* 1列に */
+    gap: 10px;
+    padding: 12px;
+  }
+  .pokedex-footer .back-to-top,
+  .pokedex-footer form {
+    grid-column: 1;
+    justify-self: center;
+  }
+  /* 退会ボタンは幅を取らないように */
+  .pokedex-footer .cancel-link {
+    padding: 8px 16px;
+  }
+}
+
+/* 追加のアクセシビリティ配慮：キーボード操作で見やすく */
+.pokedex-footer .back-to-top:focus-visible,
+.pokedex-footer .cancel-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(150, 200, 150, 0.25);
+}
