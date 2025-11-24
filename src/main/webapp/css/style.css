@@ -332,3 +332,65 @@ input[type="reset"]:hover {
 .pokedex-footer .cancel-link:focus-visible {
   box-shadow: 0 0 0 3px rgba(150, 200, 150, 0.25);
 }
+
+/* ===============================
+   📱 スマホ用レイアウト調整（600px以下）
+=============================== */
+@media (max-width: 600px) {
+
+  /* ヘッダー：横並び → 縦並びに */
+  .pokedex-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  /* タイトルの文字サイズ少し小さく */
+  .pokedex-header h1,
+  .site-title {
+    font-size: 1.1em;
+  }
+
+  /* ナビボタン縦積みでも崩れないように */
+  .header-nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ログイン・新規登録ボタン */
+  .header-btn {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    border-radius: 16px;
+  }
+
+  /* メインの余白調整 */
+  .main-content {
+    padding: 30px 12px;
+    text-align: left;
+  }
+
+  /* テーブル：min-width を解除、横にスクロールさせない */
+  .center-table {
+    min-width: 100%;
+    font-size: 0.85rem;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  /* テーブルセルの余白をスマホ用に軽く */
+  .center-table th,
+  .center-table td {
+    padding: 8px 6px;
+  }
+
+  /* 画像は全幅にフィット */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

@@ -322,3 +322,75 @@ input[type="reset"]:hover {
 /* .search-section：色（なし） */
 
 /* .search-section label：色（なし） */
+
+/* ===============================
+   📱 スマホ用（600px以下）
+=============================== */
+@media (max-width: 600px) {
+
+  /* ===== 1. ヘッダー ===== */
+  .pokedex-header {
+    flex-direction: column;   /* 横並び → 縦並び */
+    align-items: flex-start;  /* 左寄せ */
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .pokedex-header h1,
+  .pokedex-header a {
+    font-size: 1.1em; /* 少し小さく */
+  }
+
+  .header-nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ===== 2. メイン領域 ===== */
+  .main-content {
+    padding: 26px 14px;
+    text-align: left;
+  }
+
+  /* ===== 3. 検索フォーム（city-grid） ===== */
+  .city-grid {
+    grid-template-columns: 1fr; /* 1列にする */
+    gap: 6px 0;
+  }
+
+  .search-section label {
+    width: 100%;
+  }
+
+  /* ===== 4. テーブル ===== */
+  .center-table {
+    min-width: 100%;          /* 固定幅を解除 */
+    width: 100%;
+    font-size: 0.85rem;
+    display: block;
+    overflow-x: auto;         /* 横スクロール許可（崩防止） */
+  }
+
+  .center-table th,
+  .center-table td {
+    padding: 8px 6px;
+  }
+
+  /* ===== 5. 画像 ===== */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ===== 6. フッター ===== */
+  .pokedex-footer {
+    padding: 14px 10px;
+    font-size: 1em;
+  }
+
+  .back-to-top {
+    padding: 8px 16px;
+  }
+}
