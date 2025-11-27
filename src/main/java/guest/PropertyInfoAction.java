@@ -22,7 +22,6 @@ public class PropertyInfoAction extends Action {
 			String idStr = request.getParameter("id");
 			// idの無効な値を０に変換
 			if (idStr == null || idStr.trim().isBlank()) {
-				System.out.println("search info result null");
 				request.setAttribute("message", "該当する物件が見つかりませんでした");
 				return "/common/system_error.jsp";
 			}
@@ -33,12 +32,10 @@ public class PropertyInfoAction extends Action {
 
 			// 物件が見つからなかったとき
 			if (property == null) {
-				System.out.println("search info result null");
 				request.setAttribute("message", "該当する物件が見つかりませんでした");
 				return "/common/system_error.jsp";
 			}
 
-			System.out.println("search property info success");
 			request.setAttribute("property", property);
 
 			ReviewDao reviewDao = new ReviewDao();
@@ -47,7 +44,6 @@ public class PropertyInfoAction extends Action {
 			// 口コミの有無での分岐
 			// ニックネームをArrayList<String>にて渡す
 			if (reviews == null || reviews.isEmpty()) {
-				System.out.println("reviews is null");
 				request.setAttribute("nickNames", new ArrayList<String>());
 				request.setAttribute("reviews", new ArrayList<Review>());
 
@@ -61,7 +57,6 @@ public class PropertyInfoAction extends Action {
 					nickNames.add(userNickName);
 				}
 
-				System.out.println("reviews get success");
 				request.setAttribute("nickNames", nickNames);
 				request.setAttribute("reviews", reviews);
 
@@ -69,17 +64,14 @@ public class PropertyInfoAction extends Action {
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
-			System.out.println("search error(NumberFormat)");
 			request.setAttribute("message", "入力に誤りがありました");
 			return "/common/system_error.jsp";
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("search error(SQL)");
 			request.setAttribute("message", "システムエラーが発生しました。<br>再度検索をお願いします。");
 			return "/common/system_error.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("search error");
 			request.setAttribute("message", "システムエラーが発生しました。<br>再度検索をお願いします。");
 			return "/common/system_error.jsp";
 		}

@@ -1,9 +1,9 @@
 package guest;
 
+import java.sql.SQLException;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.sql.SQLException;
 
 import bean.User;
 import dao.UserDao;
@@ -16,17 +16,14 @@ public class UserSignupAction extends Action {
 			String LoginId = request.getParameter("loginid");
 			String password = request.getParameter("password");
 			String nickName = request.getParameter("nickname");
-			System.out.println(1);
 
 			User u = new User();
 			u.setLoginId(LoginId);
 			u.setPassword(password);
 			u.setNickName(nickName);
-			System.out.println(2);
 
 			UserDao dao = new UserDao();
 			dao.insertUser(u);
-			System.out.println(3);
 
 			return "redirect:/guest/user_signup_finish.jsp";
 

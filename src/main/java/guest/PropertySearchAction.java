@@ -58,13 +58,11 @@ public class PropertySearchAction extends Action {
 
 					// 物件が見つからなかったとき
 					if (properties == null || properties.isEmpty()) {
-						System.out.println("search result null");
     					request.setAttribute("properties_all", properties);
 						return "/guest/property_search_result.jsp";
 					}
 
 					request.setAttribute("properties_all", properties);
-					System.out.println("search success(manager)");
 
 					return "/guest/property_search_result.jsp";
 
@@ -74,12 +72,10 @@ public class PropertySearchAction extends Action {
 
 					// 物件が見つからなかったとき
 					if (properties == null || properties.isEmpty()) {
-						System.out.println("search result null");
 				        request.setAttribute("properties_vacant", properties);
 						return "/guest/property_search_result.jsp";
 					}
 
-					System.out.println("search success(guest,user)");
 					request.setAttribute("properties_vacant", properties);
 
 					return "/guest/property_search_result.jsp";
@@ -90,25 +86,20 @@ public class PropertySearchAction extends Action {
 
 				// 物件が見つからなかったとき
 				if (properties == null || properties.isEmpty()) {
-					System.out.println("search result null");
 				    request.setAttribute("properties_vacant", properties);
 					return "/guest/property_search_result.jsp";
 				}
 
-				System.out.println("search success(guest,user)");
 				request.setAttribute("properties_vacant", properties);
 				return "/guest/property_search_result.jsp";
 			}
 
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
-			System.out.println("search error(NumberFormat)");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("search error(SQL)");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("search error");
 		}
 		request.setAttribute("error_message", "empty_propertyid");				
 		request.setAttribute("forward_page", "/rental_room/guest/top.jsp");	

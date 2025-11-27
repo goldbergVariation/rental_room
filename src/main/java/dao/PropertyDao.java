@@ -89,7 +89,6 @@ public class PropertyDao extends Dao{
 		// 物件検索の基本SQL文
 		String sql = "select * from properties where 1=1 and status='空室' ";
 
-		System.out.println(priceNum);
 		// 価格の範囲を指定する追加文
 		String priceRange = "";
 		switch (priceNum) {
@@ -141,7 +140,6 @@ public class PropertyDao extends Dao{
 		// 価格、間取り、地区をAND条件にて検索するSQL文
 		sql = sql + priceRange + layoutRange + cityRange + order;
 
-		System.out.println(sql);
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);
 				ResultSet rs = st.executeQuery()) {
@@ -168,7 +166,6 @@ public class PropertyDao extends Dao{
 		// 物件検索の基本SQL文
 		String sql = "select * from properties where 1=1 ";
 
-		System.out.println(priceNum);
 		// 価格の範囲を指定する追加文
 		String priceRange = "";
 		switch (priceNum) {
@@ -220,7 +217,6 @@ public class PropertyDao extends Dao{
 		// 価格、間取り、地区をAND条件にて検索するSQL文
 		sql = sql + priceRange + layoutRange + cityRange + order;
 
-		System.out.println(sql);
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);
 				ResultSet rs = st.executeQuery()) {

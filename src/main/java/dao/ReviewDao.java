@@ -17,7 +17,6 @@ public class ReviewDao extends Dao {
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setInt(1, propertyId);
 
-			System.out.println("review dao内");
 			try (ResultSet rs = st.executeQuery()) {
 				List<Review> reviews = new ArrayList<Review>();
 				while (rs.next()) {
@@ -42,12 +41,8 @@ public class ReviewDao extends Dao {
 				PreparedStatement st = con.prepareStatement(sql);) {
 
 			//どこまでIDが来ているか、コンソールに表示
-	        System.out.println("ReviewDao");
-			System.out.println("review=" + review);
 			st.setString(1, review.getComment());
-			System.out.println("userId=" + userId);
 			st.setInt(2,userId);
-			System.out.println("propertyId=" + propertyId);
 			st.setInt(3,propertyId);
 			
 			line = st.executeUpdate();

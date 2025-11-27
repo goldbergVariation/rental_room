@@ -29,11 +29,9 @@ public class ManagerCheckAction extends Action {
 				return "/common/input_error.jsp";
 			}
 
-			System.out.println(1);
 			ManagerDao dao = new ManagerDao();
 			String managerLoginId = dao.getManagerLoginId(loginId);
 
-			System.out.println(2);
 			int maxlength = 20;
 			int minlength = 4;
 
@@ -42,7 +40,6 @@ public class ManagerCheckAction extends Action {
 			// 「空白 or 空文字 or null」なら true。
 			if (Stream.of(loginId, password, nickName).anyMatch(StringUtils::isBlank)) {
 				// true)
-				System.out.println(3);
 
 				request.setAttribute("error_message", "empty");
 				request.setAttribute("forward_page", "/rental_room/manager/manager_signup.jsp");
@@ -54,7 +51,6 @@ public class ManagerCheckAction extends Action {
 					|| !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
 					|| !(nickName.length() <= 1 || maxlength >= nickName.length())) {
 
-				System.out.println(4);
 				request.setAttribute("error_message", "wrong");
 				request.setAttribute("forward_page", "/rental_room/manager/manager_signup.jsp");
 				request.setAttribute("button", "管理者新規登録");
@@ -62,7 +58,6 @@ public class ManagerCheckAction extends Action {
 
 			} else if (managerLoginId != null) {// ID重複確認
 
-				System.out.println(3);
 				request.setAttribute("error_message", "duplicate");
 				request.setAttribute("forward_page", "/rental_room/manager/manager_signup.jsp");
 				request.setAttribute("button", "管理者新規登録");

@@ -13,7 +13,6 @@ public class UserReviewCheckAction extends Action {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("UserReviewCheckAction");
 		
 		HttpSession session = request.getSession();
 
@@ -26,9 +25,6 @@ public class UserReviewCheckAction extends Action {
 
 		String userId = request.getParameter("userId");
 		String propertyId = request.getParameter("propertyId");
-		System.out.println(propertyId);
-		System.out.println(nickName);
-		System.out.println(review);
 			
 		int maxlength = 300;
 		int minlength = 1;
@@ -46,7 +42,6 @@ public class UserReviewCheckAction extends Action {
 			request.setAttribute("error_message", "wrong");
 			request.setAttribute("forward_page", "/rental_room/user/user_review.jsp");
 			request.setAttribute("button", "周辺地域の口コミ登録へ");
-			System.out.println("長さチェックエラー");
 			return "/common/input_error.jsp";
 		}
 

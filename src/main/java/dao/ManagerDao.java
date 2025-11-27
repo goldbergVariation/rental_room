@@ -44,14 +44,12 @@ public class ManagerDao extends Dao {
 	public String getManagerLoginId(String loginId) throws Exception {
 
 		String sql = "SELECT * FROM managers where manager_login_id=?";
-		System.out.println(2);
 		
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
 			try (ResultSet rs = st.executeQuery();) {
 
-				System.out.println(3);
 				if (rs.next()) {
 					Manager manager = new Manager();
 					manager.setId(rs.getInt("manager_id"));

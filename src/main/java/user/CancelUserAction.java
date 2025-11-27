@@ -11,7 +11,6 @@ import tool.Action;
 
 	    @Override
 	    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-System.out.println("CancelUserAction");
 	        // accountをセッションから取得
 	        User account = (User) request.getSession().getAttribute("account");
 
@@ -26,7 +25,6 @@ System.out.println("CancelUserAction");
 	        boolean result = dao.cancelUser(userId);
 
 	        if (result) {
-	        	System.out.println(1);
 
 	            // セッション破棄
 	            request.getSession().invalidate();

@@ -15,7 +15,6 @@ public class ManagerLoginAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			HttpSession session = request.getSession();
-			System.out.println("1");
 
 			String loginId = request.getParameter("login_id");
 			String password = request.getParameter("password");
@@ -46,7 +45,6 @@ public class ManagerLoginAction extends Action {
 
 			ManagerDao dao = new ManagerDao();
 			Manager manager = dao.getManager(loginId, password);
-			System.out.println("2");
 
 			//nullではない場合(照合できた場合)
 			if (manager != null) {
@@ -54,13 +52,9 @@ public class ManagerLoginAction extends Action {
 				manager.setPassword(null);
 				session.setAttribute("account", manager);
 				//フォワードファイル(login-out.jsp)を戻す
-				System.out.println(manager.getNickName());
-				System.out.println(manager.getId());
-				System.out.println("3");
 				return "/guest/top.jsp";
 
 			}else {
-				System.out.println("4");
 				request.setAttribute("error_message", "wrong");	
 				request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	
 				request.setAttribute("button", "管理者ログインへ");	
@@ -77,7 +71,6 @@ public class ManagerLoginAction extends Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 			
-			System.out.println("5");
 			e.printStackTrace();
 			request.setAttribute("message", "システムエラーです");
 			request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	

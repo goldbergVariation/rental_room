@@ -43,12 +43,10 @@ public class PropertyRegisterConfirmAction extends Action {
 			String fileName = filePart.getSubmittedFileName();
 			String[] var = { name, priceStr, info, layout, pet, city, address, fileName};
 
-			System.out.println(1);
 
 			List<String> list = new ArrayList<>(Arrays.asList(var));
 			for (String str : list) {
 				if(StringUtils.isBlank(str)) {
-					System.out.println("未入力があります");
 					request.setAttribute("error_message", "empty");
 					request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
 					request.setAttribute("button", "物件登録へ");
@@ -67,7 +65,6 @@ public class PropertyRegisterConfirmAction extends Action {
 			// 入力が大きいときのバリデーション
 			if(name.length() > 50 || price > 10000000 || info.length() > 500 || pet.length() > 10 || city.length() > 10 ||
 					address.length() > 50 || layout.length() > 10 || fileName.length() > 100) {
-				System.out.println("入力文字数過多");
 				request.setAttribute("error_message", "wrong");
 				request.setAttribute("forward_page", "/rental_room/manager/property_register.jsp");
 				request.setAttribute("button", "物件登録へ");
@@ -80,10 +77,8 @@ public class PropertyRegisterConfirmAction extends Action {
 			fileName = System.currentTimeMillis() + "_" + fileName;
 
 			String savePath = request.getServletContext().getRealPath("/images/") + fileName;
-			System.out.println(savePath);
 			filePart.write(savePath);
 
-			System.out.println(2);
 
 			Property property = new Property();
 			property.setName(name);
@@ -95,12 +90,10 @@ public class PropertyRegisterConfirmAction extends Action {
 			property.setCity(city);
 			property.setAddress(address);
 			
-			System.out.println("物件の確認画面へ");
 			request.setAttribute("property", property);
 			return "/manager/property_register_confirm.jsp";
 
 		} catch (Exception e) {
-			System.out.println("失敗");
 			e.printStackTrace();
 			return "/common/system_error.jsp";
 		}

@@ -15,16 +15,11 @@ public class UserReviewSignupAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     	try {
-    	System.out.println("UserReviewSignupAction");
 
         // ★ フォームから値を受け取る
-        System.out.println("UserReviewSignupAction.java");
         String review = request.getParameter("review");
         String nickName = request.getParameter("nickName");
  
-        System.out.println("review = " + review);
-        System.out.println("nickName = " + nickName);
-        
 		int maxlength = 300;
 		int minlength = 1;
         
@@ -33,14 +28,12 @@ public class UserReviewSignupAction extends Action {
 			request.setAttribute("error_message", "wrong");
 			request.setAttribute("forward_page", "/rental_room/user/user_review.jsp");
 			request.setAttribute("button", "周辺地域の口コミ登録へ");
-			System.out.println("長さチェックエラー");
 			return "/common/input_error.jsp";
 		}
 
         // ★ ログイン中のユーザー情報をセッションから取得
         User user = (User) request.getSession().getAttribute("account");
         if (user == null) {
-            System.out.println("ログイン情報が見つかりません");
             
             request.setAttribute("error_message", "empty_loginid");
             request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
@@ -51,7 +44,6 @@ public class UserReviewSignupAction extends Action {
         int userId = user.getId();
         
         String propertyIdStr = request.getParameter("propertyId"); // ← 前画面からhiddenで送る想定
-        System.out.println("propertyIdStr = " + propertyIdStr);
         if (propertyIdStr == null || propertyIdStr.isEmpty()) {
    
             request.setAttribute("error_message", "empty_propertyid");
@@ -94,7 +86,6 @@ public class UserReviewSignupAction extends Action {
 		return "/common/system_error.jsp";
 	}
 
-        System.out.println("口コミ登録完了。");
 
         // ★ 完了画面へ
         return "user_review_complete.jsp";

@@ -64,9 +64,6 @@ public class UserLoginAction extends Action {
                 user.setPassword(null); // パスワードはセッションに保存しない
                 session.setAttribute("account", user);
 
-                System.out.println(user.getNickName());
-                System.out.println(user.getId());
-
                 return "/guest/top.jsp";
             }else {
 				request.setAttribute("error_message", "wrong");	
