@@ -1,10 +1,16 @@
----
-
 # 🏠 MyRental
 
 賃貸物件検索・管理ができる Web アプリケーション（JSP/Servlet + PostgreSQL）
 
----
+## 👉 公開URL（Render）
+
+### ゲスト・利用者 用
+
+[https://rental-room-x317.onrender.com/rental_room/guest/top.jsp](https://rental-room-x317.onrender.com/rental_room/guest/top.jsp)
+
+### 管理者 用
+
+[https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp](https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp)
 
 ## 📌 概要（Overview）
 
