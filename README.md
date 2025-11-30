@@ -1,152 +1,192 @@
-## 🏠 MyRental
+---
 
-```
-賃貸物件検索・管理ができるWebアプリケーション（JSP/Servlet + MySQL）
-```
+# 🏠 MyRental
+
+賃貸物件検索・管理ができる Web アプリケーション（JSP/Servlet + PostgreSQL）
+
+---
+
 ## 📌 概要（Overview）
 
-MyRental は、賃貸物件の検索・閲覧・レビュー投稿・管理を行える
-Java（JSP & Servlet）ベースのWebアプリケーションです。
-職業訓練校の総合製作として開発しました。
+**MyRental** は、賃貸物件の検索・閲覧・レビュー投稿・管理を行える
+Java（JSP & Servlet）ベースの Web アプリケーションです。
 
-ユーザー向け（ゲスト / 利用者）と
-管理者向け（管理者）の画面を実装し、
-物件閲覧〜レビュー〜管理までを一通り体験できる仕組みになっています。
+職業訓練校の総合製作として開発し、
+現在は **Render（Docker）上で PostgreSQL を使用して運用**しています。
+
+ゲスト・会員ユーザー向けの基本機能に加え、
+管理者用の管理画面も実装しており、
+物件閲覧からレビュー投稿、物件管理まで一通り体験できます。
+
+---
 
 ## 🛠 使用技術（Tech Stack）
+
+### ▶ ローカル開発環境
+
 ```
-分類	ローカル開発技術
-言語	Java（JSP ＆ Servlet）
-フレームワーク	Jakarta EE / JSTL
-データベース	MySQL 8.0.44
-サーバー	Apache Tomcat 10.1.49
-IDE	Eclipse（Pleiades）
-バージョン管理	GitHub
-その他	HTML / CSS / JDBC / Java Beans / DAOパターン / MVCパターン / Front Controllerパターン
+言語：Java（JSP & Servlet）
+フレームワーク：Jakarta EE / JSTL
+データベース：MySQL 8.0.44
+サーバー：Apache Tomcat 10.1.49
+IDE：Eclipse（Pleiades）
+設計：MVC / Front Controller / DAO / JavaBeans
+```
 
-📡 デプロイ環境（Deployment）
+### ▶ 本番環境（Render）
 
-Render Web Service（Java 17）
+```
+Render Web Service（Docker Deploy）
+アプリサーバー：Tomcat 10.1（JDK 21）
+デプロイ形式：WAR（Maven Multi-stage Build）
+データベース：PostgreSQL 17.7（Render PostgreSQL）
+```
 
-ビルド＆実行：Render Java Buildpack
+---
 
-アプリケーション形式：WAR/JAR
+## 🎮 機能一覧（Features）
 
-データベース：Render PostgreSQL 17
+### 👤 ゲスト
 
-ローカル開発：Eclipse + Tomcat 10.1.x（職業訓練校環境）
+* 物件検索
+* 物件詳細ページ・口コミ表示
+* 利用者新規登録 / ログイン
 
-データベース	PostgreSQL 17.7
-🎮 機能一覧（Features）
-👤 一般ユーザー（ゲスト/会員）
+### 👤 利用者
 
-物件一覧・検索表示
+* 物件一覧・検索
+* 物件詳細ページ・口コミ表示
+* レビュー投稿（1〜300文字）
+* 退会
 
-物件詳細の閲覧
+### 🛒 管理者
 
-レビュー投稿機能（1〜300文字）
+* 物件一覧・検索
+* 物件詳細ページ・口コミ表示
+* ログイン
+* 物件登録
+* 掲載状態変更（掲載停止 / 再掲載）
+* 管理者新規登録
 
-会員登録 / ログイン
-
-マイページでのレビュー管理
-
-🛒 管理者（manager）
-
-物件登録・編集・削除
-
-掲載状態の変更（空室 / 掲載停止 など）
-
-👑 スーパ管理者（super admin）
-
-管理者とユーザーの管理（削除・凍結）
-
-すべてのレビューと物件の参照
-
-売上管理（※必要なら後で追記）
+---
 
 ## 📁 ディレクトリ構成（Directory Structure）
 
 ```
 rental_room/
 ├─ src/
- └─ main/
-      ├─ java/
-      │   ├─ bean
-      │   ├─ dao
-      │   ├─ guest
-      │   ├─ manager
-      │   ├─ tool
-      │   └─ user
-      └─ webapp/
-          ├─ common
-          ├─ css
-          ├─ guest
-          ├─ images
-          ├─ manager
-          ├─ user
-          ├─ META-INF
-          └─ WEB-INF/
+│  └─ main/
+│      ├─ java/
+│      │   ├─ bean
+│      │   ├─ dao
+│      │   ├─ guest
+│      │   ├─ manager
+│      │   ├─ tool
+│      │   └─ user
+│      └─ webapp/
+│          ├─ common
+│          ├─ css
+│          ├─ guest
+│          ├─ images
+│          ├─ manager
+│          ├─ user
+│          ├─ META-INF
+│          └─ WEB-INF/
+├─ Dockerfile
+├─ pom.xml
+└─ README.md
 ```
+
+---
+
+## 🐳 Dockerfile（Render 本番環境）
+
+````markdown
+```dockerfile
+# ---- 1. Maven Build Stage ----
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# ---- 2. Tomcat Deploy Stage ----
+FROM tomcat:10.1-jdk21
+COPY --from=build /app/target/rental_room-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/rental_room.war
+
+ENV PORT=8080
+EXPOSE ${PORT}
+
+CMD ["sh", "-c", "catalina.sh run"]
+```
+````
+
+---
+
 ## 🧱 データベース設計（Database Schema）
-```
-テーブル：
-users：利用者情報
-managers：管理者情報
-properties：物件情報
-reviews：口コミ
 
 ```
+users      ：利用者情報
+managers   ：管理者情報
+properties ：物件情報
+reviews    ：口コミ（1～300文字）
+```
+
+
+---
+
 ## 🚀 セットアップ方法（How to Run）
-```
-1. リポジトリを clone
-git clone https://github.com/your-name/rental_room.git
 
-2. MySQL にデータベース作成
+### ▶ ローカル開発（MySQL ＋ Tomcat）
+
+```
+1. データベース作成
 CREATE DATABASE rental_room CHARACTER SET utf8mb4;
 
-3. 初期データを import
+2. 初期データ import
 mysql -u root -p rental_room < dump.sql
 
-4. Tomcat で起動
-
-Eclipse から
-Run → Run on Server を選択。
+3. 実行
+Eclipse → Run on Server（Tomcat）
 ```
-### 📸 スクリーンショット（Screenshots）
-🎯 このアプリのポイント（Highlights）
+
+### ▶ 本番環境（Render / PostgreSQL）
+
+Render は GitHub リポジトリと連携することで、
+Dockerfile に従って自動でビルド・デプロイを行います。
+
+PostgreSQL 初期化例：
+
 ```
-MVC + FrontController による拡張性ある構造
-
-DAOパターン を用いたDBアクセス
-
-PreparedStatement によるSQLインジェクション対策
-
-JSTL <c:out> によるXSS対策
-
-画像名を utf8mb4_bin で厳密に管理
-
-シンプル＆見やすいUI
+psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.sql
 ```
+
+---
+
+## 🎯 このアプリのポイント（Highlights）
+
+```
+MVC + FrontController による拡張性
+DAOパターンによる DB アクセス分離
+PreparedStatement による SQLインジェクション対策
+JSTL <c:out> による XSS対策
+PostgreSQL で画像名などを厳密管理（大文字小文字区別）
+ローカル（MySQL/Tomcat）と本番（PostgreSQL/Docker/Tomcat）の両対応
+```
+
+---
+
 ## 📝 今後の改善予定（Future Work）
-```
-物件カテゴリ機能
-
-レビュー検索機能
-
-人気物件ランキング
-
-Render等での本番サーバー公開
-
-Google Maps API の導入
-```
-## 👤 作者（Author）
-```
-みつひこ（飯島）
-
-Polytech Center Chiba
-
-Java Web Developer
-
-GitHub : https://github.com/your-name              
 
 ```
+物件検索の種類とソートの強化
+口コミの編集・削除
+ログイン履歴の保持	
+物件のお気に入り保存
+利用者によるレビュー一覧表示
+物件情報のインポートとエクスポート
+```
+
+---
+
+
+
