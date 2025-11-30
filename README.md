@@ -1,3 +1,6 @@
+## 📁 ディレクトリ構成（Directory Structure）
+
+```
 rental_room/
 ├─ src/
 │  └─ main/
@@ -29,3 +32,4 @@ rental_room/
 │       └─ user
 ├─ .settings/
 └─ README.md
+```
