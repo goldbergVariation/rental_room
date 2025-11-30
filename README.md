@@ -12,6 +12,17 @@
 
 [https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp](https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp)
 
+
+## 🔑 テストアカウント（ログイン情報）
+
+### ▶ 利用者
+- **ID：** user  
+- **パスワード：** password
+
+### ▶ 管理者
+- **ID：** manager  
+- **パスワード：** password
+  
 ## 📌 概要（Overview）
 
 **MyRental** は、賃貸物件の検索・閲覧・レビュー投稿・管理を行える
