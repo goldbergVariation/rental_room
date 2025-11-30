@@ -186,7 +186,47 @@ PostgreSQL で画像名などを厳密管理（大文字小文字区別）
 物件情報のインポートとエクスポート
 ```
 
----
+## 📸 Screenshots
+
+<details>
+<summary>▶ 一般ユーザー画面</summary>
+
+### トップページ  
+
+<img width="960" height="538" alt="一般トップ画面" src="https://github.com/user-attachments/assets/17e51f2e-7154-43f2-a550-1cbce20b8184" />
+
+### 物件一覧  
+
+<img width="952" height="527" alt="物件検索結果" src="https://github.com/user-attachments/assets/08ed61a7-323f-4721-8d14-dd68cffe2c77" />
+
+### 物件詳細  
+
+<img width="656" height="539" alt="検索結果詳細" src="https://github.com/user-attachments/assets/cb08312b-366f-4e56-a4d5-80b4f9758c2e" />
+
+</details>
+
+<details>
+<summary>▶ 管理者画面</summary>
+
+### 管理者トップ  
+
+<img width="747" height="276" alt="管理者トップ画面" src="https://github.com/user-attachments/assets/909481d8-b637-4ee1-b188-9d66fda6162f" />
+
+</details>
+
+<details>
+<summary>▶ ER図 / ユースケース図</summary>
+
+### ER図  
+
+<img width="551" height="384" alt="ER図" src="https://github.com/user-attachments/assets/74234482-2b54-41c1-96c9-83d739d8707c" />
+
+### ユースケース図  
+
+<img width="700" height="457" alt="ユースケース図" src="https://github.com/user-attachments/assets/d1aed35d-c192-4b78-94d6-d86fcfa78ddb" />
+
+</details>
+
 
 
 
