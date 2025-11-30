@@ -71,10 +71,6 @@ public class UserLoginAction extends Action {
 				request.setAttribute("button", "利用者ログインへ");	
 				return "/common/input_error.jsp"; 
                 // ユーザーが存在しない場合
-                //request.setAttribute("error_message", "notfound");
-                //request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
-                //request.setAttribute("button", "利用者ログインへ");
-                
             }
 
         } catch (SQLException e) {

@@ -37,7 +37,7 @@ public class UserCheckAction extends Action {
 				request.setAttribute("button", "利用者新規登録へ");
 				return "/common/input_error.jsp";
 
-				// 4文字以上20文字未満のチェック
+			// 4文字以上20文字未満のチェック
 			} else if (!loginId.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
 					|| !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
 					|| !(nickName.length() <= 1 || maxlength >= nickName.length())) {

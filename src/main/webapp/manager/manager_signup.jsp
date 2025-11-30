@@ -13,7 +13,7 @@
 <jsp:include page="/common/header.jsp"/>
 <main class="main-content">
 
-<h1>《管理者の新規登録》</h1>
+<h2>《管理者の新規登録》</h2>
 
 <form id="registerForm" action="/rental_room/manager/ManagerCheck.action" method="post">
     <p>ログインID<br>
@@ -38,7 +38,8 @@
 
     <p id="passwordMessage" style="color:red;"></p>
 
-    <p><input type="submit" value="登録"></p>
+    <p><input type="submit" value="登録">   <input type="reset" value="リセット"></p>
+    
 </form>
 
 <script>

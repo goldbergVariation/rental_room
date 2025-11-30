@@ -32,7 +32,7 @@ public class ManagerLoginAction extends Action {
 				return "/common/manager_input_error.jsp";
 				//入力画面に戻す
 
-				//文字数・文字種のチェック
+			//文字数・文字種のチェック
 			} else if (!loginId.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
 					|| !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")) {
 
@@ -69,7 +69,6 @@ public class ManagerLoginAction extends Action {
 			return "/common/manager_system_error.jsp";
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			
 			e.printStackTrace();
 			request.setAttribute("message", "システムエラーです");

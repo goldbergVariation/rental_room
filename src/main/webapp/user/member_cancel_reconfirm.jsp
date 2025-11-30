@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <title>利用者退会の最終確認</title>
 
-<jsp:include page="/common/head.jsp" />  <!-- ✅ CSSなど共通設定を読み込む -->
+<jsp:include page="/common/head.jsp" />  
 </head>
 
 <body>
 <jsp:include page="/common/header.jsp" />
-<main class="main-content">	<!-- 装飾設定の読み込み -->
+<main class="main-content">	
 
 	<h1>《退会手続きの前にご確認ください》</h1>
 
@@ -22,11 +22,6 @@
 
 	<h3>
 	
-    <!--  	<a href="/rental_room/user/CancelUser.action">はい</a>
-    	&nbsp;|&nbsp;
-    	<a href="/rental_room/guest/top.jsp">いいえ</a>
-    -->
-    
     <!-- ボタン化 -->
     
     	<form action="/rental_room/user/CancelUser.action" method="post"> 
@@ -38,7 +33,6 @@
     	<form action="/rental_room/guest/top.jsp" method="post"> 
 		<button type="submit">いいえ</button>
 	</form>
-       	
     
        
 	</h3>

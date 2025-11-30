@@ -16,7 +16,7 @@ public class UserReviewSignupAction extends Action {
 
     	try {
 
-        // ★ フォームから値を受け取る
+        // フォームから値を受け取る
         String review = request.getParameter("review");
         String nickName = request.getParameter("nickName");
  
@@ -31,7 +31,7 @@ public class UserReviewSignupAction extends Action {
 			return "/common/input_error.jsp";
 		}
 
-        // ★ ログイン中のユーザー情報をセッションから取得
+        // ログイン中のユーザー情報をセッションから取得
         User user = (User) request.getSession().getAttribute("account");
         if (user == null) {
             
@@ -86,8 +86,7 @@ public class UserReviewSignupAction extends Action {
 		return "/common/system_error.jsp";
 	}
 
-
-        // ★ 完了画面へ
+        //  完了画面へ
         return "user_review_complete.jsp";
     }
 }

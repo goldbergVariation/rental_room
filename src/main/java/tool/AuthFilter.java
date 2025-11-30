@@ -36,7 +36,7 @@ public class AuthFilter implements Filter {
 		    return;
 		}
 		
-		// ユーザー専用
+		// 利用者専用
 		if (path.startsWith("/user") && !"利用者".equals(account.getRole())) {
 		    response.sendRedirect(request.getContextPath() + "/guest/top.jsp");
 		    return;

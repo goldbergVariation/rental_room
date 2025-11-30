@@ -6,15 +6,15 @@
 <meta charset="UTF-8">
 <title>口コミ登録完了</title>
 
-<jsp:include page="/common/head.jsp" />  <!-- ✅ CSSなど共通設定を読み込む -->
+<jsp:include page="/common/head.jsp" /> 
 
 </head>
 
 <body>    
 <jsp:include page="/common/header.jsp"/>
-<main class="main-content">	<!-- 装飾設定の読み込み -->
+<main class="main-content">
     
-		<h2>♪ 口コミ登録が完了しました ♪</h2>
+		<h2>《 口コミ登録が完了しました 》</h2>
 		
 		<form action="/rental_room/guest/top.jsp" method="post">
     	<input type="submit" value="物件検索へ戻る">

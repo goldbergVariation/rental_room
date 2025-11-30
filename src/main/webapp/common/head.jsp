@@ -3,6 +3,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<% // CSSの適用を権限で変更する %>
 <c:choose>
 	<c:when test="${not empty sessionScope.account && sessionScope.account.role == '管理者'}">
 		<link rel="stylesheet" href="<c:url value='/css/manager_style.css' />">

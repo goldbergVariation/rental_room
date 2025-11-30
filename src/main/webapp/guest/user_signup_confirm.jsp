@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <title>利用者の新規登録の確認</title>
 
-<jsp:include page="/common/head.jsp" />	<!-- ✅ CSSなど共通設定を読み込む -->
+<jsp:include page="/common/head.jsp" />	
 
 </head>
 
 <body>
 <jsp:include page="/common/header.jsp" />	
-<main class="main-content">	<!-- 装飾設定の読み込み -->
+<main class="main-content">	
 
 <table class="center-table">
 	<tr>
@@ -29,7 +29,7 @@
 <p>この内容で登録しますか？</p>
 
 
-<form action="UserSignup.action" method="post"><!--postリクエスト-->
+<form action="UserSignup.action" method="post">
  <!-- 値を再送する（hiddenで送る） -->
     <input type="hidden" name="loginid" value="<%= (String) session.getAttribute("loginId") %>">
     <input type="hidden" name="nickname" value="<%= (String) session.getAttribute("nickName") %>">

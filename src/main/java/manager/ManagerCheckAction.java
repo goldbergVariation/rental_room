@@ -35,18 +35,15 @@ public class ManagerCheckAction extends Action {
 			int maxlength = 20;
 			int minlength = 4;
 
-			// if(loginId==null || loginId.trim().isEmpty()){
-
 			// 「空白 or 空文字 or null」なら true。
 			if (Stream.of(loginId, password, nickName).anyMatch(StringUtils::isBlank)) {
-				// true)
 
 				request.setAttribute("error_message", "empty");
 				request.setAttribute("forward_page", "/rental_room/manager/manager_signup.jsp");
 				request.setAttribute("button", "管理者新規登録");
 				return "/common/input_error.jsp";
 
-				// 4文字以上20文字未満のチェック
+			// 4文字以上20文字未満のチェック
 			} else if (!loginId.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
 					|| !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
 					|| !(nickName.length() <= 1 || maxlength >= nickName.length())) {
@@ -80,12 +77,3 @@ public class ManagerCheckAction extends Action {
 		return "/common/system_error.jsp";
 	}
 }
-			// メモ
-			// String hidePass=StringUtils.repeat("*",password.length());
-			// StringUtilsでnullを回避できるが使用方法が分からない
-			// StringUtils.isBlank(null); // true
-			// StringUtils.isBlank(""); // true
-			// StringUtils.isBlank(" "); // true
-			// メモ終わり
-
-			// User user=dao.getUser(loginId,password,nickName);

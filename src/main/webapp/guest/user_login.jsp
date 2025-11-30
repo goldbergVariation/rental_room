@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>利用者ログイン</title>
 
-<jsp:include page="/common/head.jsp" />  <!-- ✅ CSSなど共通設定を読み込む -->
+<jsp:include page="/common/head.jsp" />  
 
 <style>
 .layout-group {
@@ -33,10 +33,10 @@
 
 <body>
 <jsp:include page="/common/header.jsp" />
-<main class="main-content">	<!-- 装飾設定の読み込み -->
+<main class="main-content">	
 
 
-      <h1>ログイン</h1>
+      <h1>《 ログイン 》</h1>
       <form action="/rental_room/guest/UserLogin.action" method="post">
         ログイン ID<br>
         <input type="text" name="login_id" required><br>

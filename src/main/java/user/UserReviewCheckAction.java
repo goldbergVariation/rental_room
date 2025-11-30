@@ -22,7 +22,6 @@ public class UserReviewCheckAction extends Action {
 		String nickName = request.getParameter("nickName");
 
 		//ID
-
 		String userId = request.getParameter("userId");
 		String propertyId = request.getParameter("propertyId");
 			

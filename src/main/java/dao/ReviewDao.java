@@ -40,7 +40,6 @@ public class ReviewDao extends Dao {
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);) {
 
-			//どこまでIDが来ているか、コンソールに表示
 			st.setString(1, review.getComment());
 			st.setInt(2,userId);
 			st.setInt(3,propertyId);
@@ -50,7 +49,6 @@ public class ReviewDao extends Dao {
 			return line;
 
 		}
-
 	}
 
 }

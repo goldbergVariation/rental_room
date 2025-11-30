@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  display: block; /* レイアウト基盤（元は flex ならここで指定） */
+  display: block; 
 }
 
 /* .pokedex-header：構造 */
@@ -161,7 +161,7 @@ input[type="reset"] {
 /* .back-to-top:hover：構造 */
 .back-to-top:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(255, 255, 200, 0.6); /* 視覚効果は構造扱いでOK */
+  box-shadow: 0 0 10px rgba(255, 255, 200, 0.6); 
 }
 
 /* .search-section：構造 */
@@ -223,9 +223,6 @@ body {
   color: #1b6b5a; /* 抑えたグリーン系のアクセント */
   transform: translateY(-1px);
 }
-/* .pokedex-header nav p：色（なし） */
-
-/* ヘッダーナビ：色（なし） */
 
 /* 小さな装飾（LED など） */
 .led {
@@ -243,9 +240,6 @@ body {
   color: #607d6e; /* 落ち着いたグリーングレー */
 }
 
-/* .main-content：色（なし） */
-
-/* .city-grid：色（なし） */
 
 /* .center-table：色 */
 .center-table {

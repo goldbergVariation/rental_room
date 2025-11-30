@@ -4,12 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ログアウト確認</title>
-	<jsp:include page="/common/head.jsp" />	<!-- ✅ CSSなど共通設定を読み込む -->
+	<jsp:include page="/common/head.jsp" />	
 </head>
 
 <body>
 <%@include file="/common/header.jsp" %>
-	<main class="main-content">	<!-- 装飾設定の読み込み -->
+	<main class="main-content">	
     
    	 <h1>《ログアウト確認 》</h1> 
     	<h2>ログアウトしますか？</h2>

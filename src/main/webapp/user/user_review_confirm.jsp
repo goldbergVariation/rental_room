@@ -21,9 +21,9 @@
 
 <body>
 <jsp:include page="/common/header.jsp" />
-<main class="main-content">	<!-- 装飾設定の読み込み -->
+<main class="main-content">	
 
-	<h1>口コミ登録内容の確認</h1>
+	<h1>《 口コミ登録内容の確認 》</h1>
 
 	<!-- ★ 受け取ったパラメータを表示 -->
 	<table class="center-table">

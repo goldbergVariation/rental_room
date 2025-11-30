@@ -148,7 +148,7 @@ public class UserDao extends Dao {
 	}
 
 	public boolean cancelUser(int userId) throws Exception {
-		
+
 		String sql = "UPDATE users SET user_status = '退会済' WHERE user_id = ?";
 
 		try (Connection con = getConnection();
@@ -157,10 +157,9 @@ public class UserDao extends Dao {
 			int result = st.executeUpdate();
 			//0より大きければture、小さければfalse
 			return result > 0 ? true : false;
-			
+
+		}
 
 	}
 
-	}
-	
 }

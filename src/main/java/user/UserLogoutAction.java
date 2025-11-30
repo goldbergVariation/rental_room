@@ -20,7 +20,6 @@ public class UserLogoutAction extends Action {
 
 			}
 			
-			
 		} catch (IllegalStateException e) {	
 
 			e.printStackTrace();

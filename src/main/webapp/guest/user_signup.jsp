@@ -15,7 +15,7 @@
 <main class="main-content">
 
 
-	<h3>♪ 利用者新規登録 ♪</h3>
+	<h2>《 利用者新規登録 》</h2>
 	<form id="registerForm" action="/rental_room/guest/UserCheck.action" method="post">
     <p>ログインID<br>
         <input type="text" name="loginid" minlength="4" maxlength="20" pattern="[a-zA-Z0-9]+" required>
@@ -39,7 +39,7 @@
 
     <p id="passwordMessage" style="color:red;"></p>
 
-    <p><input type="submit" value="登録"></p>
+    <p><input type="submit" value="登録">  <input type="reset" value="リセット"></p>
 </form>
 
 <script>

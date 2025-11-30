@@ -26,10 +26,9 @@ public class ManagerDao extends Dao {
 					manager.setNickName(rs.getString("manager_nickname"));
 					manager.setPassword(rs.getString("manager_password"));
 					manager.setRole(rs.getString("manager_role"));
-					
-                // LocalDateTime で取得
-                manager.setCreatedAt(rs.getTimestamp("manager_created_at").toLocalDateTime());
-					
+					// LocalDateTime で取得
+					manager.setCreatedAt(rs.getTimestamp("manager_created_at").toLocalDateTime());
+
 					return manager;
 				} else {
 
@@ -38,13 +37,12 @@ public class ManagerDao extends Dao {
 			}
 		}
 	}
-	
-	
+
 	//管理者のログインIDで、データーベースに管理者情報があるか探すメソッド
 	public String getManagerLoginId(String loginId) throws Exception {
 
 		String sql = "SELECT * FROM managers where manager_login_id=?";
-		
+
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
@@ -69,7 +67,6 @@ public class ManagerDao extends Dao {
 		}
 	}
 
-	
 	//フォームから入力されたID、パスワードをデーターベースのManagersテーブルに入れるメソッド
 	public boolean insertManager(Manager manager) throws Exception {
 
@@ -79,21 +76,13 @@ public class ManagerDao extends Dao {
 				PreparedStatement st = con.prepareStatement(sql);) {
 
 			st.setString(1, manager.getLoginId());
-			st.setString(2, manager.getNickName());			
+			st.setString(2, manager.getNickName());
 			st.setString(3, manager.getPassword());
 			int line = st.executeUpdate();
 
-			return line > 0 ? true: false;
+			return line > 0 ? true : false;
 
 		}
 	}
-	
+
 }
-
-	
-	
-
-
-
-
-
