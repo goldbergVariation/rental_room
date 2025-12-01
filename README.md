@@ -6,15 +6,17 @@
 
 ### ゲスト・利用者 用
 
-### ▶ 利用者 (テストアカウント)
-- **ID：** user  
-- **パスワード：** password
+### ▶ 利用者 (テストアカウント)   
+**ID：** user  
+
+**パスワード：** password
 
 [https://rental-room-x317.onrender.com/rental_room/guest/top.jsp](https://rental-room-x317.onrender.com/rental_room/guest/top.jsp)
 
-### ▶ 管理者 (テストアカウント)
-- **ID：** manager  
-- **パスワード：** password
+### ▶ 管理者 (テストアカウント)　 
+**ID：** manager
+
+**パスワード：** password
 
 [https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp](https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp)
 
@@ -83,6 +85,17 @@ Render Web Service（Docker Deploy）
 
 ---
 
+## 🎯 このアプリのポイント（Highlights）
+
+```
+MVC + FrontController による拡張性
+DAOパターンによる DB アクセス分離
+PreparedStatement による SQLインジェクション対策
+JSTL <c:out> による XSS対策
+PostgreSQL で画像名などを厳密管理（大文字小文字区別）
+ローカル（MySQL/Tomcat）と本番（PostgreSQL/Docker/Tomcat）の両対応
+```
+---
 ## 📁 ディレクトリ構成（Directory Structure）
 
 ```
@@ -173,18 +186,7 @@ PostgreSQL 初期化例：
 psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.sql
 ```
 
----
 
-## 🎯 このアプリのポイント（Highlights）
-
-```
-MVC + FrontController による拡張性
-DAOパターンによる DB アクセス分離
-PreparedStatement による SQLインジェクション対策
-JSTL <c:out> による XSS対策
-PostgreSQL で画像名などを厳密管理（大文字小文字区別）
-ローカル（MySQL/Tomcat）と本番（PostgreSQL/Docker/Tomcat）の両対応
-```
 
 ---
 
