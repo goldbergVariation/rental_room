@@ -6,22 +6,18 @@
 
 ### ゲスト・利用者 用
 
-[https://rental-room-x317.onrender.com/rental_room/guest/top.jsp](https://rental-room-x317.onrender.com/rental_room/guest/top.jsp)
-
-### 管理者 用
-
-[https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp](https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp)
-
-
-## 🔑 テストアカウント（ログイン情報）
-
-### ▶ 利用者
+### ▶ 利用者 (テストアカウント)
 - **ID：** user  
 - **パスワード：** password
 
-### ▶ 管理者
+[https://rental-room-x317.onrender.com/rental_room/guest/top.jsp](https://rental-room-x317.onrender.com/rental_room/guest/top.jsp)
+
+### ▶ 管理者 (テストアカウント)
 - **ID：** manager  
 - **パスワード：** password
+
+[https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp](https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp)
+
   
 ## 📌 概要（Overview）
 
