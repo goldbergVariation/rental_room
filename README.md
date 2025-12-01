@@ -20,10 +20,9 @@
 
 [https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp](https://rental-room-x317.onrender.com/rental_room/guest/manager_login.jsp)
 
-  
 ## 📌 概要（Overview）
 
-**MyRental** は、賃貸物件の検索・閲覧・レビュー投稿・管理を行える
+**MyRental** は、賃貸物件（千葉市）の検索・閲覧・レビュー投稿・管理を行える
 Java（JSP & Servlet）ベースの Web アプリケーションです。
 
 職業訓練校の総合製作として開発し、
@@ -32,30 +31,6 @@ Java（JSP & Servlet）ベースの Web アプリケーションです。
 ゲスト・会員ユーザー向けの基本機能に加え、
 管理者用の管理画面も実装しており、
 物件閲覧からレビュー投稿、物件管理まで一通り体験できます。
-
----
-
-## 🛠 使用技術（Tech Stack）
-
-### ▶ ローカル開発環境
-
-```
-言語：Java（JSP & Servlet）
-フレームワーク：Jakarta EE / JSTL
-データベース：MySQL 8.0.44
-サーバー：Apache Tomcat 10.1.49
-IDE：Eclipse（Pleiades）
-設計：MVC / Front Controller / DAO / JavaBeans
-```
-
-### ▶ 本番環境（Render）
-
-```
-Render Web Service（Docker Deploy）
-アプリサーバー：Tomcat 10.1（JDK 21）
-デプロイ形式：WAR（Maven Multi-stage Build）
-データベース：PostgreSQL 17.7（Render PostgreSQL）
-```
 
 ---
 
@@ -82,6 +57,26 @@ Render Web Service（Docker Deploy）
 * 物件登録
 * 掲載状態変更（掲載停止 / 再掲載）
 * 管理者新規登録
+
+## 🛠 使用技術（Tech Stack）
+### ▶ ローカル開発環境
+
+```
+言語：Java（JSP & Servlet）, Jakarta EE , JSTL
+データベース：MySQL 8.0.44
+サーバー：Apache Tomcat 10.1.49
+IDE：Eclipse（Pleiades）
+設計：MVC / Front Controller / DAO / JavaBeans
+```
+
+### ▶ 本番環境（Render）
+
+```
+Render Web Service（Docker Deploy）
+アプリサーバー：Tomcat 10.1（JDK 21）
+デプロイ形式：WAR（Maven Multi-stage Build）
+データベース：PostgreSQL 17.7（Render PostgreSQL）
+```
 
 ---
 
@@ -155,6 +150,9 @@ users      ：利用者情報
 managers   ：管理者情報
 properties ：物件情報
 reviews    ：口コミ（1～300文字）
+
+口コミが1人1物件につき1つである制限を（物件ID、利用者ID）のユニーク設定により実現。
+利用者の退会と物件の掲載停止はレコードではなく論理削除にて対応。
 ```
 
 
@@ -203,6 +201,7 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 
 ## 📸 Screenshots
 
+クリックしてください👇
 <details>
 <summary>▶ 一般ユーザー画面</summary>
 
