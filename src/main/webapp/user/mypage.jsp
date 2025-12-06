@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,21 +11,21 @@
 <body>
 <%@include file="/common/header.jsp" %>
 	<main class="main-content">	
-    
+
    	 <h1>《 マイページ 》</h1> 
    	 
-   	 <table>
+	<table class="center-table">
    	 	<tr>
-   	 		<th>ニックネーム</th><td>abc</td>
+   	 		<th>ニックネーム</th><td>${account.nickName}</td>
    	 	</tr>
    	 	<tr>
-   	 		<th>メールアドレス<th><td>sdfafa@mail.jp</td>
+   	 		<th>メールアドレス</th><td>dfafa@mail.jp</td>
    	 	</tr>
    	 </table>
    	 <br>
    	 
    	 <h2>口コミ一覧</h2>
-   	 <table>
+	<table class="center-table">
    	 	<tr>
    	 		<th>ニックネーム</th><td>aaa</td>
    	 	</tr>
