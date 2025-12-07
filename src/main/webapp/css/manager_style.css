@@ -39,6 +39,20 @@ body {
   gap: 10px;
 }
 
+
+.header-btn {
+  display: inline-block;
+  background-color: #dcdcdc;
+  color: rgb(246, 245, 244);
+  text-decoration: none;
+  padding: 6px 13px;
+  border-radius: 20px;/* 丸み */
+  margin: 0 6px;
+  font-weight: normal;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(200, 230, 201, 0.6);
+}
+
 /* .led：構造 */
 .led {
   width: 14px;
@@ -311,6 +325,24 @@ input[type="reset"]:hover {
 /* .pokedex-footer a:hover：色 */
 .pokedex-footer a:hover {
   opacity: 0.7;
+}
+/* --- back-to-top を中央セルに配置 --- */
+.pokedex-footer .back-to-top {
+  /* 構造 */
+  grid-column: 2;
+  justify-self: center;
+
+  /* 色 */
+  background-color: #dcdcdc;
+  color: #555;
+  box-shadow: 0 2px 5px rgba(200, 230, 201, 0.5);
+
+  /* 見た目／操作性 */
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: bold;
 }
 
 /* .search-section：色（なし） */

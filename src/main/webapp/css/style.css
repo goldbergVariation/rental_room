@@ -16,8 +16,7 @@ body {
 
   /* 背景レイヤー1：グラデーション */
   background: linear-gradient(120deg, #fffde7, #e8f5e9); /* 淡い黄〜緑のグラデーション */
-  
-
+}  
 /* ===============================
    ヘッダー装飾
 =============================== */
@@ -105,10 +104,10 @@ body {
 
 .header-btn {
   display: inline-block;
-  background-color: #dcf8c6; /* ?パステルグリーン系に変更 */
+  background-color: #dcf8c6;
   color: #444;
   text-decoration: none;
-  padding: 8px 18px;
+  padding: 5px 10px;
   border-radius: 20px;/* 丸み */
   margin: 0 6px;
   font-weight: bold;
@@ -121,7 +120,6 @@ body {
 	box-shadow: 0 0 10px rgba(200, 255, 200, 0.6);
 	transform: translateY(-2px); /* ふんわり浮く */
 }
-
 
 /* ログインボタン（ミント） */
 .header-btn.login {
@@ -393,4 +391,5 @@ input[type="reset"]:hover {
     max-width: 100%;
     height: auto;
   }
+
 }
