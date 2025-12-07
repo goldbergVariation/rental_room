@@ -8,12 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import bean.Account;
-import bean.Property;
 import bean.Review;
-import bean.User;
-import dao.PropertyDao;
 import dao.ReviewDao;
-import dao.UserDao;
 import tool.Action;
 
 public class ReviewListAction extends Action {

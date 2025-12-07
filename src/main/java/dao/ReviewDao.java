@@ -13,7 +13,7 @@ public class ReviewDao extends Dao {
 
 	// ユーザーが口コミ一覧を取得
 	public List<Review> getReviewsByUserId(int userId) throws Exception {
-		String sql = "select r.comment, r.created_at, r.property_id, r.user_id ,p.name as property_name "
+		String sql = "select r.review_id, r.comment, r.created_at, r.property_id, r.user_id ,p.name as property_name "
 					+ "from reviews r "
 					+ "join properties p on r.property_id = p.property_id "
 					+ "where r.user_id = ? order by r.created_at desc ";
@@ -27,6 +27,7 @@ public class ReviewDao extends Dao {
 					review.setComment(rs.getString("comment"));
 					review.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
 					review.setUserId(rs.getInt("user_id"));
+					review.setId(rs.getInt("review_id"));
 					review.setPropertyId(rs.getInt("property_id"));	
 					review.setPropertyName(rs.getString("property_name"));
 					reviews.add(review);

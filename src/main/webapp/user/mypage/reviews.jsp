@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>マイページ</title>
+<title>口コミ一覧</title>
 <jsp:include page="/common/head.jsp" />
 <style>
 .review {
@@ -29,11 +29,24 @@
 				<tr>
 					<th>物件名</th>
 					<th>口コミ</th>
+					<th>投稿日時</th>
+					<th>削除</th>
 				</tr>
 				<c:forEach var="review" items="${reviews}">
 					<tr>
 						<td style="text-align: left;" class="review"><c:out value="${review.propertyName}" /></td>
 						<td style="text-align: left;" class="review"><c:out value="${review.comment}" /></td>
+						<td style="text-align: left;"><c:out value="${review.createdAt}" /></td>
+						<td>
+							<form action="/rental_room/user/mypage/review_delete_confirm.jsp" method="post">
+								<input type="hidden" name="reviewId" value="<c:out value='${review.id}'/>">
+								<input type="hidden" name="comment" value="<c:out value='${review.comment}'/>">
+								<input type="hidden" name="propertyName" value="<c:out value='${review.propertyName}'/>">
+								<input type="hidden" name="propertyId" value="<c:out value='${review.propertyId}'/>">
+								<input type="hidden" name="createdAt" value="<c:out value='${review.createdAt}'/>">
+								<input type="submit" value="削除">
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
