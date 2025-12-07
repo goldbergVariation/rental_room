@@ -3,6 +3,7 @@ package bean;
 import java.io.Serializable;
 
 public class Property implements Serializable {
+	private static final long serialVersionUID = 5535227659831811545L;
 	private int id;
 	private String name;
 	private int price;

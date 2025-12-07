@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Account implements Serializable {
+	private static final long serialVersionUID = -5156509077411355828L;
 	private int id;
 	private String loginId;
 	private String nickName;

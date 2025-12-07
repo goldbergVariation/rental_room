@@ -11,6 +11,32 @@ import tool.Dao;
 
 public class ReviewDao extends Dao {
 
+	// ユーザーが口コミ一覧を取得
+	public List<Review> getReviewsByUserId(int userId) throws Exception {
+		String sql = "select r.comment, r.created_at, r.property_id, r.user_id ,p.name as property_name "
+					+ "from reviews r "
+					+ "join properties p on r.property_id = p.property_id "
+					+ "where r.user_id = ? order by r.created_at desc ";
+		try(Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql); ){
+			st.setInt(1, userId);
+			
+			try(ResultSet rs = st.executeQuery()){
+				List<Review> reviews = new ArrayList<Review>();
+				while(rs.next()) {
+					Review review = new Review();
+					review.setComment(rs.getString("comment"));
+					review.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
+					review.setUserId(rs.getInt("user_id"));
+					review.setPropertyId(rs.getInt("property_id"));	
+					review.setPropertyName(rs.getString("property_name"));
+					reviews.add(review);
+				}
+				return reviews;
+			}
+		}
+	}
+
+	// 物件コードにて口コミ一覧を取得
 	public List<Review> getReviews(int propertyId) throws Exception {
 		String sql = "select * from reviews where property_id = ? order by created_at desc ";
 
@@ -47,7 +73,6 @@ public class ReviewDao extends Dao {
 			line = st.executeUpdate();
 
 			return line;
-
 		}
 	}
 

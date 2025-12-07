@@ -3,37 +3,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>マイページ</title>
-	<jsp:include page="/common/head.jsp" />	
+<meta charset="UTF-8">
+<title>マイページ</title>
+<jsp:include page="/common/head.jsp" />
 </head>
 
 <body>
-<%@include file="/common/header.jsp" %>
-	<main class="main-content">	
+	<%@include file="/common/header.jsp"%>
+	<main class="main-content">
 
-   	 <h1>《 マイページ 》</h1> 
-   	 
-	<table class="center-table">
-   	 	<tr>
-   	 		<th>ニックネーム</th><td>${account.nickName}</td>
-   	 	</tr>
-   	 	<tr>
-   	 		<th>メールアドレス</th><td>dfafa@mail.jp</td>
-   	 	</tr>
-   	 </table>
-   	 <br>
-   	 
-   	 <h2>口コミ一覧</h2>
-	<table class="center-table">
-   	 	<tr>
-   	 		<th>ニックネーム</th><td>aaa</td>
-   	 	</tr>
-   	 </table>
-   	 
-	 </main>
-    
-<%@include file="/common/footer.jsp"%>
+		<h1>《 マイページ 》</h1>
+
+		<table class="center-table">
+			<tr>
+				<th>ログインID</th>
+				<td><c:out value="${account.loginId}" /></td>
+			</tr>
+			<tr>
+				<th>ニックネーム</th>
+				<td><c:out value="${account.nickName}" /></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<c:choose>
+					<c:when test="${account.email != null and not empty account.email}">
+						<td><c:out value="${account.email}" /></td>
+					</c:when>
+					<c:otherwise>
+						<td>未設定</td>
+					</c:otherwise>
+				</c:choose>
+			</tr>
+		</table>
+		<br> 
+
+		<h3><a href="/rental_room/user/mypage/ReviewList.action">口コミ一覧</a></h3>
+		<h3>Eメール登録・変更</h3>
+		<h3>パスワード変更 </h3>
+		<h3><a href="/rental_room/user/member_cancel_confirm.jsp">退会処理</a></h3>
+
+	</main>
+	<%@include file="/common/footer.jsp"%>
 </body>
 </html>
-    

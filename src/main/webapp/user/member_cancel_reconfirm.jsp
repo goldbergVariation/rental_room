@@ -20,22 +20,15 @@
 	
 		<h3>よろしいですか？</h3>
 
-	<h3>
-	
-    <!-- ボタン化 -->
-    
-    	<form action="/rental_room/user/CancelUser.action" method="post"> 
+    <form action="/rental_room/user/CancelUser.action" method="post"> 
 		<button type="submit">はい</button>
-	</form>&nbsp;
+	</form>
     
-       	
-       	&nbsp;
-    	<form action="/rental_room/guest/top.jsp" method="post"> 
+    <br>
+   	<form action="/rental_room/user/mypage.jsp" method="post"> 
 		<button type="submit">いいえ</button>
 	</form>
     
-       
-	</h3>
  </main>
 
 <jsp:include page="/common/footer.jsp"/>

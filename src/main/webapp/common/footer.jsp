@@ -12,10 +12,5 @@
 		</c:otherwise>
 	</c:choose>
 
-  <c:if test="${sessionScope.account != null and sessionScope.account.role == '利用者'}">
-    <form action="/rental_room/user/member_cancel_confirm.jsp" method="get">
-      <button type="submit" class="cancel-link">退会</button>
-    </form>
-  </c:if>
 </footer>
 

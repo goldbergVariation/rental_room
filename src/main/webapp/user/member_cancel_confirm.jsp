@@ -19,26 +19,14 @@
 
 	<h2>よろしいですか？</h2>
 
-	<h2>
-	
-	<!--  
-		<a href="/rental_room/user/member_cancel_reconfirm.jsp">はい</a>-->
-    	<!--  <input type="submit" value="はい"> -->
-    <!--	&nbsp;|&nbsp;
-    	<a href="/rental_room/guest/top.jsp">いいえ</a>-->
-    	<!--  <input type="submit" value="いいえ"> -->
-	</h2>
-	
-	    	<form action="/rental_room/user/member_cancel_reconfirm.jsp" method="post"> 
-		<button type="submit">はい</button>&nbsp;
+	<form action="/rental_room/user/member_cancel_reconfirm.jsp" method="post"> 
+		<button type="submit">はい</button>
 	</form>
-    
        	
-       	&nbsp;
-    	<form action="/rental_room/guest/top.jsp" method="post"> 
+   <br>
+   	<form action="/rental_room/user/mypage.jsp" method="post"> 
 		<button type="submit">いいえ</button>
 	</form>
-	
 	
 
 </main>

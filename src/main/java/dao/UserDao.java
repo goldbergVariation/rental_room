@@ -29,6 +29,7 @@ public class UserDao extends Dao {
 					user.setPassword(rs.getString("user_password"));
 					user.setRole(rs.getString("user_role"));
 					user.setStatus(rs.getString("user_status"));
+					user.setEmail(rs.getString("user_email"));
 
 					// LocalDateTime で取得
 					user.setCreatedAt(rs.getTimestamp("user_created_at").toLocalDateTime());
@@ -110,7 +111,6 @@ public class UserDao extends Dao {
 			int line = st.executeUpdate();
 
 			return line;
-
 		}
 	}
 
@@ -140,7 +140,6 @@ public class UserDao extends Dao {
 
 					return user;
 				} else {
-
 					return null;
 				}
 			}
@@ -157,9 +156,7 @@ public class UserDao extends Dao {
 			int result = st.executeUpdate();
 			//0より大きければture、小さければfalse
 			return result > 0 ? true : false;
-
 		}
-
 	}
 
 }
