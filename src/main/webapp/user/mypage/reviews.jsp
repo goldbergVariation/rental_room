@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,7 @@
 		<c:if test="${not empty reviews}">
 			<table class="center-table">
 				<tr>
+					<th>物件ID</th>
 					<th>物件名</th>
 					<th>口コミ</th>
 					<th>投稿日時</th>
@@ -34,6 +36,10 @@
 				</tr>
 				<c:forEach var="review" items="${reviews}">
 					<tr>
+						<td style="text-align: left;" class="review">
+							<fmt:formatNumber value="${review.id}" pattern="00000" var="reviewId"/>	
+							<c:out value="${reviewId}" />
+						</td>
 						<td style="text-align: left;" class="review"><c:out value="${review.propertyName}" /></td>
 						<td style="text-align: left;" class="review"><c:out value="${review.comment}" /></td>
 						<td style="text-align: left;"><c:out value="${review.createdAt}" /></td>

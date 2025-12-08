@@ -3,8 +3,11 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.NamingException;
 
 import bean.Review;
 import tool.Dao;
@@ -60,9 +63,23 @@ public class ReviewDao extends Dao {
 		}
 	}
 
+	public boolean deleteReview(int reviewId) throws SQLException {
+	    String sql = "DELETE FROM reviews WHERE review_id = ?";
+
+	    try (Connection con = getConnection();
+	         PreparedStatement st = con.prepareStatement(sql)) {
+	        st.setInt(1, reviewId);
+
+	        return st.executeUpdate() > 0;
+
+	    } catch (NamingException e) {
+	        // JNDI lookup 失敗 → DB にアクセスできないので SQL扱いに昇格
+	        throw new SQLException("データソースの取得に失敗しました", e);
+	    }
+	}
+	
 	public int insertReview(Review review, int userId, int propertyId) throws Exception {
-		String sql = "insert into reviews(comment,user_id,property_id)values(?,?,?) ";
-		int line = 0;
+		String sql = "insert into reviews (comment,user_id,property_id) values(?,?,?) ";
 
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);) {
@@ -71,7 +88,7 @@ public class ReviewDao extends Dao {
 			st.setInt(2,userId);
 			st.setInt(3,propertyId);
 			
-			line = st.executeUpdate();
+			int line = st.executeUpdate();
 
 			return line;
 		}

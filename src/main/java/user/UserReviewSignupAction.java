@@ -15,10 +15,8 @@ public class UserReviewSignupAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     	try {
-
         // フォームから値を受け取る
         String review = request.getParameter("review");
-        String nickName = request.getParameter("nickName");
  
 		int maxlength = 300;
 		int minlength = 1;
