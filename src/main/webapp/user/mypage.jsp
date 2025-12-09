@@ -38,7 +38,7 @@
 		<br> 
 
 		<h3><a href="/rental_room/user/mypage/ReviewList.action">口コミ一覧</a></h3>
-		<h3>Eメール登録・変更</h3>
+		<h3>Eメール変更</h3>
 		<h3>パスワード変更 </h3>
 		<h3><a href="/rental_room/user/member_cancel_confirm.jsp">退会処理</a></h3>
 

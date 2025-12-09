@@ -11,6 +11,7 @@ public class Account implements Serializable {
 	private String password;
 	private String role;
 	private LocalDateTime createdAt;
+	private String email;
 
 	public int getId() {
 		return id;
@@ -59,4 +60,13 @@ public class Account implements Serializable {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

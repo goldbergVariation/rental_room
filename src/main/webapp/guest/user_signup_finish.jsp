@@ -8,7 +8,6 @@
 <title>利用者の登録完了</title>
 
 <jsp:include page="/common/head.jsp" />	
-
 </head>
 
 <body>
