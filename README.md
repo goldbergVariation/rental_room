@@ -34,7 +34,7 @@ Java（JSP & Servlet）ベースの Web アプリケーションです。
 
 ---
 
-## 🎮 機能一覧（Features）
+##  機能一覧（Features）
 
 ###  ゲスト
 
@@ -58,7 +58,7 @@ Java（JSP & Servlet）ベースの Web アプリケーションです。
 * 掲載状態変更（掲載停止 / 再掲載）
 * 管理者新規登録
 
-## 🛠 使用技術（Tech Stack）
+##  使用技術（Tech Stack）
 ### ▶ ローカル開発環境
 
 ```
@@ -188,7 +188,7 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 
 ---
 
-## 📝 今後の改善予定（Future Work）
+##  今後の改善予定（Future Work）
 
 ```
 物件検索の種類とソートの強化
