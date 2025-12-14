@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-
 import dao.UserDao;
 import tool.Action;
 
@@ -44,10 +43,21 @@ public class UserCheckAction extends Action {
 			} 
 
 			UserDao dao = new UserDao();
-			String userLoginId = dao.getUserLoginId(loginId);
+			boolean isLoginId = dao.isLoginId(loginId);
 
-			if (userLoginId != null) {// ID重複確認
-				request.setAttribute("error_message", "duplicate");
+			// ID 重複確認
+			if (isLoginId){
+				request.setAttribute("error_message", "duplicate_loginId");
+				request.setAttribute("forward_page", "/rental_room/guest/user_signup.jsp");
+				request.setAttribute("button", "利用者新規登録へ");
+				return "/common/input_error.jsp";
+			}
+			
+			boolean isEmail = dao.isEmail(email);
+
+			// Email 重複確認
+			if (isEmail) {
+				request.setAttribute("error_message", "duplicate_email");
 				request.setAttribute("forward_page", "/rental_room/guest/user_signup.jsp");
 				request.setAttribute("button", "利用者新規登録へ");
 				return "/common/input_error.jsp";

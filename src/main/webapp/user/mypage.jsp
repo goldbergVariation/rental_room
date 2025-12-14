@@ -37,10 +37,16 @@
 		</table>
 		<br> 
 
-		<h3><a href="/rental_room/user/mypage/ReviewList.action">口コミ一覧</a></h3>
-		<h3>Eメール変更</h3>
-		<h3>パスワード変更 </h3>
-		<h3><a href="/rental_room/user/member_cancel_confirm.jsp">退会処理</a></h3>
+		<form action="/rental_room/user/mypage/ReviewList.action" method="post">
+			<button type="submit">口コミ一覧</button> 
+		</form>
+		<br>
+		<form action="/rental_room/user/member_cancel_confirm.jsp" method="post">
+			<button type="submit">退会処理</button> 
+		</form>
+		
+		<%// <h3>Eメール変更</h3>%>
+		<%//<h3>パスワード変更 </h3> %>
 
 	</main>
 	<%@include file="/common/footer.jsp"%>

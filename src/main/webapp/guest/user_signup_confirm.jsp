@@ -19,6 +19,9 @@
 	<tr>
 		<td>ニックネーム：<c:out value="${requestScope.nickName}"/></td>
 	</tr>
+	<tr>
+		<td>メールアドレス：<c:out value="${requestScope.email}"/></td>
+	</tr>
 </table>
 
 <p>この内容で登録しますか？</p>

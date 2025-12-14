@@ -69,27 +69,28 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public String getUserLoginId(String loginId) throws SQLException {
+	public boolean isLoginId(String loginId) throws SQLException {
 		String sql = "SELECT * FROM users where user_login_id=?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
 			try (ResultSet rs = st.executeQuery();) {
 
-				if (rs.next()) {
-					User user = new User();
-					user.setId(rs.getInt("user_id"));
-					user.setLoginId(rs.getString("user_login_id"));
-					user.setNickName(rs.getString("user_nickname"));
-					user.setPassword(rs.getString("user_password"));
-					user.setRole(rs.getString("user_role"));
-					user.setStatus(rs.getString("user_status"));
-					user.setCreatedAt(rs.getTimestamp("user_created_at").toLocalDateTime());
+				return rs.next();
+			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
+		}
+	}
 
-					return user.getLoginId();
-				} else {
-					return null;
-				}
+	public boolean isEmail(String email) throws SQLException {
+		String sql = "SELECT * FROM users where user_email =?";
+
+		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
+			st.setString(1, email);
+			try (ResultSet rs = st.executeQuery();) {
+
+				return rs.next();
 			}
 		} catch (NamingException e) {
 			throw new SQLException("データソースの取得に失敗しました", e);
