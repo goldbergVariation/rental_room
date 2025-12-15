@@ -119,7 +119,6 @@ input[type="reset"]:hover{
 				<input type="password" class="input" id="confirm_password" name="confirm_password" minlength="4" maxlength="20" pattern="[a-zA-Z0-9]+" placeholder="もう一度入力" required>
 
 				<p id="passwordMessage" style="color: red;"></p>
-
 				<input type="submit" value="登録"> <input type="reset" value="リセット">
 				</div>
 			</form>

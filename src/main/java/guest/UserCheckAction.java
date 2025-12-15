@@ -24,7 +24,6 @@ public class UserCheckAction extends Action {
 
 			// 「空白 or 空文字 or null」なら true。
 			if (Stream.of(loginId, password, nickName, email).anyMatch(StringUtils::isBlank)) {
-
 				request.setAttribute("error_message", "empty");
 				request.setAttribute("forward_page", "/rental_room/guest/user_signup.jsp");
 				request.setAttribute("button", "利用者新規登録へ");

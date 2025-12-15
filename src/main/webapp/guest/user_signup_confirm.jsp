@@ -12,6 +12,7 @@
 <jsp:include page="/common/header.jsp" />	
 <main class="main-content">	
 
+<h1>《利用者の新規登録》</h1>
 <table class="center-table">
 	<tr>
 		<td>ログインID：<c:out value="${requestScope.loginId}"/></td>
@@ -27,10 +28,10 @@
 <p>この内容で登録しますか？</p>
 
 <form action="UserSignup.action" method="post">
-    <input type="hidden" name="loginid" value="<%= (String) request.getAttribute("loginId") %>">
-    <input type="hidden" name="nickname" value="<%= (String) request.getAttribute("nickName") %>">
-    <input type="hidden" name="password" value="<%= (String) request.getAttribute("password") %>">
-    <input type="hidden" name="email" value="<%= (String) request.getAttribute("email") %>">
+    <input type="hidden" name="loginId" value="${requestScope.loginId}">
+    <input type="hidden" name="nickName" value="${requestScope.nickName}">
+    <input type="hidden" name="password" value="${requestScope.password}">
+    <input type="hidden" name="email" value="${requestScope.email}">
 
     <input type="submit" value="はい"> 
 </form><br>

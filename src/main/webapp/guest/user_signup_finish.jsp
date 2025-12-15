@@ -14,7 +14,8 @@
 <jsp:include page="/common/header.jsp"/>
 <main class="main-content">
     
-    《 利用者新規登録を完了しました 》<br><br>
+    <h1>《管理者の新規登録完了》</h1>
+    <h2>利用者新規登録を完了しました</h2>
     
     <form action="user_login.jsp" method="post">
     	<input type="submit" value="ログイン画面へ">

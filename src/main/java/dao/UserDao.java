@@ -97,19 +97,17 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public int insertUser(User user) throws Exception {
-
+	public boolean insertUser(User user) throws Exception {
 		String sql = "insert into users(user_login_id,user_nickname,user_password, user_email)values(?,?,?,?)";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
-
 			st.setString(1, user.getLoginId());
 			st.setString(2, user.getNickName());
 			st.setString(3, user.getPassword());
 			st.setString(4, user.getEmail());
 			int line = st.executeUpdate();
 
-			return line;
+			return line > 0 ? true :false;
 		}
 	}
 

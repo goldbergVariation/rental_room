@@ -50,9 +50,9 @@ public class UserSignupAction extends Action {
 			u.setEmail(email);
 
 			UserDao dao = new UserDao();
-			dao.insertUser(u);
-
-			return "redirect:/guest/user_signup_finish.jsp";
+			if(dao.insertUser(u)) {
+				return "redirect:/guest/user_signup_finish.jsp";
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
