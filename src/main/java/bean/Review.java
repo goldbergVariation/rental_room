@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Review implements Serializable {
+	private static final long serialVersionUID = -1326394901085098828L;
 	private int id;
 	private String comment;
 	private LocalDateTime createdAt;
 	private int userId;
 	private int propertyId;
+	private String propertyName;
 
 	public int getId() {
 		return id;
@@ -48,6 +50,14 @@ public class Review implements Serializable {
 
 	public void setPropertyId(int propertyId) {
 		this.propertyId = propertyId;
+	}
+
+	public String getPropertyName() {
+		return propertyName;
+	}
+
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
 
 }

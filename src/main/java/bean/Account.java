@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Account implements Serializable {
+	private static final long serialVersionUID = -5156509077411355828L;
 	private int id;
 	private String loginId;
 	private String nickName;
 	private String password;
 	private String role;
 	private LocalDateTime createdAt;
+	private String email;
 
 	public int getId() {
 		return id;
@@ -58,4 +60,13 @@ public class Account implements Serializable {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

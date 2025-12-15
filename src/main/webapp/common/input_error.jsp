@@ -22,6 +22,14 @@
       <h3>このログインIDは使えません。別のログインIDを使用してください。</h3>
     </c:if>
 
+    <c:if test="${error_message == 'duplicate_loginId'}">
+      <h3>このログインIDは使えません。別のログインIDを使用してください。</h3>
+    </c:if>
+
+    <c:if test="${error_message == 'duplicate_email'}">
+      <h3>このメールアドレスは使用できません。他のものでお試しください。</h3>
+    </c:if>
+
     <c:if test="${error_message == 'wrong'}">
       <h3>入力に誤りがあります。もう一度確認をお願いします。</h3>
     </c:if>

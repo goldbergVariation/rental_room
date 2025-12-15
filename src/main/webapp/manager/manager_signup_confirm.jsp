@@ -11,22 +11,28 @@
 
 <body>
 <jsp:include page="/common/header.jsp"/>
-
 <main class="main-content">
 
 <h1>《管理者の新規登録》</h1>
-	ログインID：<c:out value="${sessionScope.loginId}"/></td><br>
-	使用者名：<c:out value="${sessionScope.nickName}"/><br>
-	パスワード：<c:out value="${sessionScope.hidePass}"/><br>
-	
+<table class="center-table">
+	<tr>
+		<td>ログインID：<c:out value="${requestScope.loginId}"/></td>
+	</tr>
+	<tr>
+		<td>ニックネーム：<c:out value="${requestScope.nickName}"/></td>
+	</tr>
+	<tr>
+		<td>メールアドレス：<c:out value="${requestScope.email}"/></td>
+	</tr>
+</table>
+
 <p>この内容で登録しますか？</p>
 
-
 <form action="ManagerSignup.action" method="post"><!--postリクエスト-->
- <!-- 値を再送する（hiddenで送る） -->
-    <input type="hidden" name="loginId" value="<%= (String) session.getAttribute("loginId") %>">
-    <input type="hidden" name="nickName" value="<%= (String) session.getAttribute("nickName") %>">
-    <input type="hidden" name="password" value="<%= (String) session.getAttribute("password") %>">
+    <input type="hidden" name="loginId" value="${requestScope.loginId}">
+    <input type="hidden" name="nickName" value="${requestScope.nickName}">
+    <input type="hidden" name="password" value="${requestScope.password}">
+    <input type="hidden" name="email" value="${requestScope.email}">
 
     <input type="submit" value="はい"> 
 </form>

@@ -22,6 +22,7 @@
     <c:if test="${sessionScope.account != null and sessionScope.account.role == '利用者'}">
       <p>
         <strong>こんにちは <c:out value="${sessionScope.account.nickName}"/> さん</strong>
+        <a href="/rental_room/user/mypage.jsp" class="header-btn">マイページ</a>
         <a href="/rental_room/user/user_logout_confirm.jsp" class="header-btn">ログアウト</a>
       </p>
     </c:if>

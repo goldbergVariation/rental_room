@@ -43,6 +43,7 @@
         パスワード<br>
         <input type="password" name="password" required><br><br><br>
         <input type="submit" value="ログイン">
+        <input type="reset" value="リセット">
       </form>
  </main>
 
