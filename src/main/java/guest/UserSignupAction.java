@@ -9,15 +9,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import bean.User;
 import dao.UserDao;
 import tool.Action;
+import tool.PasswordUtil;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class UserSignupAction extends Action {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			String loginId = request.getParameter("loginid");
+			String loginId = request.getParameter("loginId");
 			String password = request.getParameter("password");
-			String nickName = request.getParameter("nickname");
+			String nickName = request.getParameter("nickName");
 			String email = request.getParameter("email");
 
 			int maxlength = 20;
@@ -42,10 +44,13 @@ public class UserSignupAction extends Action {
 				request.setAttribute("button", "利用者新規登録へ");
 				return "/common/input_error.jsp";
 			} 
+			
+			// パスワードのハッシュ化(Bcrypt)
+			String hashPass = PasswordUtil.hash(password);			
 
 			User u = new User();
 			u.setLoginId(loginId);
-			u.setPassword(password);
+			u.setPassword(hashPass);
 			u.setNickName(nickName);
 			u.setEmail(email);
 
