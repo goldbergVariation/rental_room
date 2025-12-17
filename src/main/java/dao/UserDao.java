@@ -14,13 +14,11 @@ import tool.Dao;
 
 public class UserDao extends Dao {
 
-	public User getUser(String loginId, String password) throws Exception {
-
-		String sql = "SELECT * FROM users where user_login_id=? and user_password=?";
+	public User getUser(String loginId) throws Exception {
+		String sql = "SELECT * FROM users where user_login_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
-			st.setString(2, password);
 			try (ResultSet rs = st.executeQuery();) {
 
 				if (rs.next()) {
@@ -32,13 +30,10 @@ public class UserDao extends Dao {
 					user.setRole(rs.getString("user_role"));
 					user.setStatus(rs.getString("user_status"));
 					user.setEmail(rs.getString("user_email"));
-
-					// LocalDateTime で取得
 					user.setCreatedAt(rs.getTimestamp("user_created_at").toLocalDateTime());
 
 					return user;
 				} else {
-
 					return null;
 				}
 			}
@@ -46,7 +41,6 @@ public class UserDao extends Dao {
 	}
 
 	public User getUser(int id) throws Exception {
-
 		String sql = "SELECT * FROM users where user_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -60,6 +54,7 @@ public class UserDao extends Dao {
 					user.setNickName(rs.getString("user_nickname"));
 					user.setRole(rs.getString("user_role"));
 					user.setStatus(rs.getString("user_status"));
+					user.setEmail(rs.getString("user_email"));
 					user.setCreatedAt(rs.getTimestamp("user_created_at").toLocalDateTime());
 					return user;
 				} else {
@@ -120,6 +115,7 @@ public class UserDao extends Dao {
 			st.setString(1, loginId);
 			st.setString(2, password);
 			st.setString(3, nickname);
+			st.setString(3, nickname);
 			try (ResultSet rs = st.executeQuery();) {
 
 				if (rs.next()) {
@@ -129,6 +125,7 @@ public class UserDao extends Dao {
 					user.setNickName(rs.getString("user_nickname"));
 					user.setPassword(rs.getString("user_password"));
 					user.setRole(rs.getString("user_role"));
+					user.setEmail(rs.getString("user_email"));
 					user.setStatus(rs.getString("user_status"));
 
 					// LocalDateTime で取得

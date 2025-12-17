@@ -12,14 +12,12 @@ import tool.Dao;
 
 public class ManagerDao extends Dao {
 
-	public Manager getManager(String loginId, String password) throws Exception {
-
-		String sql = "SELECT * FROM managers where manager_login_id=? and manager_password=?";
+	public Manager getManager(String loginId) throws Exception {
+		String sql = "SELECT * FROM managers where manager_login_id=? ";
 
 		try (Connection con = getConnection();
 				PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
-			st.setString(2, password);
 			try (ResultSet rs = st.executeQuery();) {
 
 				if (rs.next()) {
@@ -29,12 +27,11 @@ public class ManagerDao extends Dao {
 					manager.setNickName(rs.getString("manager_nickname"));
 					manager.setPassword(rs.getString("manager_password"));
 					manager.setRole(rs.getString("manager_role"));
-					// LocalDateTime で取得
+					manager.setEmail(rs.getString("manager_email"));
 					manager.setCreatedAt(rs.getTimestamp("manager_created_at").toLocalDateTime());
 
 					return manager;
 				} else {
-
 					return null;
 				}
 			}

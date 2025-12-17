@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import tool.PasswordUtil;
 
 import bean.Manager;
 import dao.ManagerDao;
@@ -44,16 +45,14 @@ public class ManagerLoginAction extends Action {
 			}
 
 			ManagerDao dao = new ManagerDao();
-			Manager manager = dao.getManager(loginId, password);
+			Manager manager = dao.getManager(loginId);
 
-			//nullではない場合(照合できた場合)
-			if (manager != null) {
-				//セッション属性に設定
+			//managerがnullではない、かつパスワードが照合できた場合
+			if (manager != null && PasswordUtil.verify(password, manager.getPassword())) {
 				manager.setPassword(null);
 				session.setAttribute("account", manager);
-				//フォワードファイル(login-out.jsp)を戻す
-				return "/guest/top.jsp";
 
+				return "/guest/top.jsp";
 			}else {
 				request.setAttribute("error_message", "wrong");	
 				request.setAttribute("forward_page", "/rental_room/guest/manager_login.jsp	");	

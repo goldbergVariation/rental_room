@@ -40,8 +40,8 @@
 		<form action="/rental_room/user/mypage/ReviewList.action" method="post">
 			<button type="submit">口コミ一覧</button> 
 		</form>
+		<br>
 		<form action="/rental_room/user/member_cancel_confirm.jsp" method="post">
-			<input type="submit" value="">
 			<button type="submit">退会処理コミ一覧</button> 
 		</form>
 		

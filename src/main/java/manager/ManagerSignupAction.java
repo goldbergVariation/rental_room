@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import bean.Manager;
 import dao.ManagerDao;
 import tool.Action;
+import tool.PasswordUtil;
 
 public class ManagerSignupAction extends Action {
 
@@ -48,10 +49,13 @@ public class ManagerSignupAction extends Action {
 				request.setAttribute("button", "管理者新規登録へ");
 				return "/common/input_error.jsp";
 			}
+			
+			// パスワードのハッシュ化(Bcrypt)
+			String hashPass = PasswordUtil.hash(password);
 
 			Manager manager = new Manager();
 			manager.setLoginId(loginId);
-			manager.setPassword(password);
+			manager.setPassword(hashPass);
 			manager.setNickName(nickName);
 			manager.setEmail(email);
 

@@ -9,83 +9,83 @@ import jakarta.servlet.http.HttpSession;
 import bean.User;
 import dao.UserDao;
 import tool.Action;
+import tool.PasswordUtil;
 
 public class UserLoginAction extends Action {
 
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            // セッション取得
-            HttpSession session = request.getSession();
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			// セッション取得
+			HttpSession session = request.getSession();
 
-            // リクエストパラメータを取得
-            String loginId = request.getParameter("login_id");
-            String password = request.getParameter("password");
+			// リクエストパラメータを取得
+			String loginId = request.getParameter("login_id");
+			String password = request.getParameter("password");
 
-            int minlength = 4;
-            int maxlength = 20;
+			int minlength = 4;
+			int maxlength = 20;
 
-            // ログインIDとパスワードが空文字かnullかのチェック
-            if (loginId == null || loginId.trim().isEmpty() ||
-                password == null || password.trim().isEmpty()) {
+			// ログインIDとパスワードが空文字かnullかのチェック
+			if (loginId == null || loginId.trim().isEmpty() || password == null || password.trim().isEmpty()) {
 
-                request.setAttribute("error_message", "empty");
-                request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
-                request.setAttribute("button", "利用者ログインへ");
-                return "/common/input_error.jsp";
-                //入力エラーページに戻す
-            }
+				request.setAttribute("error_message", "empty");
+				request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
+				request.setAttribute("button", "利用者ログインへ");
+				return "/common/input_error.jsp";
+				// 入力エラーページに戻す
+			}
 
-            // 文字数・文字種のチェック
-            if (!loginId.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$") ||
-                !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")) {
+			// 文字数・文字種のチェック
+			if (!loginId.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")
+					|| !password.matches("^[a-zA-Z0-9]{" + minlength + "," + maxlength + "}$")) {
 
-                request.setAttribute("error_message", "wrong");
-                request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
-                request.setAttribute("button", "利用者ログインへ");
-                return "/common/input_error.jsp";
-                //入力エラーページに戻す
-            }
+				request.setAttribute("error_message", "wrong");
+				request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
+				request.setAttribute("button", "利用者ログインへ");
+				return "/common/input_error.jsp";
+				// 入力エラーページに戻す
+			}
 
-            // DAOでユーザー検索
-            UserDao dao = new UserDao();
-            User user = dao.getUser(loginId, password);
+			// DAOでユーザー検索
+			UserDao dao = new UserDao();
+			User user = dao.getUser(loginId);
 
-            if (user != null) {
-                // 退会済みユーザーはログイン不可
-                if ("退会済".equals(user.getStatus())) {
-                	request.setAttribute("error_message", "withdrawal"); // 退会済み用のエラーキー
-                	request.setAttribute("forward_page", "/rental_room/guest/user_signup.jsp	");	
-                	request.setAttribute("button", "利用者新規登録へ");
-                    return "/common/input_error.jsp";
-                }
+			// userが	nullでない、かつパスワードが照合できている
+			if (user != null && PasswordUtil.verify(password, user.getPassword())) {
+				// 退会済みユーザーはログイン不可
+				if ("退会済".equals(user.getStatus())) {
+					request.setAttribute("error_message", "withdrawal"); // 退会済み用のエラーキー
+					request.setAttribute("forward_page", "/rental_room/guest/user_signup.jsp	");
+					request.setAttribute("button", "利用者新規登録へ");
+					return "/common/input_error.jsp";
+				}
 
-                // ログイン成功処理
-                user.setPassword(null); // パスワードはセッションに保存しない
-                session.setAttribute("account", user);
+				// ログイン成功処理
+				user.setPassword(null); // パスワードはセッションに保存しない
+				session.setAttribute("account", user);
 
-                return "/guest/top.jsp";
-            }else {
-				request.setAttribute("error_message", "wrong");	
-				request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp	");	
-				request.setAttribute("button", "利用者ログインへ");	
-				return "/common/input_error.jsp"; 
-                // ユーザーが存在しない場合
-            }
+				return "/guest/top.jsp";
+			} else {
+				request.setAttribute("error_message", "wrong");
+				request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp	");
+				request.setAttribute("button", "利用者ログインへ");
+				return "/common/input_error.jsp";
+				// ユーザーが存在しない場合
+			}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("message", "システムエラーです");
-            request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
-            request.setAttribute("button", "利用者ログインへ");
-            return "/common/system_error.jsp";
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("message", "システムエラーです");
-            request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
-            request.setAttribute("button", "利用者ログインへ");
-            return "/common/system_error.jsp";
-        }
-    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			request.setAttribute("message", "システムエラーです");
+			request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
+			request.setAttribute("button", "利用者ログインへ");
+			return "/common/system_error.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("message", "システムエラーです");
+			request.setAttribute("forward_page", "/rental_room/guest/user_login.jsp");
+			request.setAttribute("button", "利用者ログインへ");
+			return "/common/system_error.jsp";
+		}
+	}
 }
-
