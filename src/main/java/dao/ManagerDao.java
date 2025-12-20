@@ -12,11 +12,10 @@ import tool.Dao;
 
 public class ManagerDao extends Dao {
 
-	public Manager getManager(String loginId) throws Exception {
+	public Manager getManager(String loginId) throws SQLException {
 		String sql = "SELECT * FROM managers where manager_login_id=? ";
 
-		try (Connection con = getConnection();
-				PreparedStatement st = con.prepareStatement(sql);) {
+		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
 			try (ResultSet rs = st.executeQuery();) {
 
@@ -35,16 +34,16 @@ public class ManagerDao extends Dao {
 					return null;
 				}
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
-	//管理者のログインIDで、データーベースに管理者情報があるか探すメソッド
-	public String getManagerLoginId(String loginId) throws Exception {
-
+	// 管理者のログインIDで、データーベースに管理者情報があるか探すメソッド
+	public String getManagerLoginId(String loginId) throws SQLException {
 		String sql = "SELECT * FROM managers where manager_login_id=?";
 
-		try (Connection con = getConnection();
-				PreparedStatement st = con.prepareStatement(sql);) {
+		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
 			try (ResultSet rs = st.executeQuery();) {
 
@@ -64,6 +63,8 @@ public class ManagerDao extends Dao {
 					return null;
 				}
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
@@ -95,14 +96,12 @@ public class ManagerDao extends Dao {
 		}
 	}
 
-
-	//フォームから入力されたID、パスワードをデーターベースのManagersテーブルに入れるメソッド
-	public boolean insertManager(Manager manager) throws Exception {
+	// フォームから入力されたID、パスワードをデーターベースのManagersテーブルに入れるメソッド
+	public boolean insertManager(Manager manager) throws SQLException {
 
 		String sql = "insert into managers (manager_login_id, manager_nickname, manager_password, manager_email) values(?,?,?,?) ";
 
-		try (Connection con = getConnection();
-				PreparedStatement st = con.prepareStatement(sql);) {
+		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 
 			st.setString(1, manager.getLoginId());
 			st.setString(2, manager.getNickName());
@@ -111,7 +110,9 @@ public class ManagerDao extends Dao {
 			int line = st.executeUpdate();
 
 			return line > 0 ? true : false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
-	}
 
+	}
 }
