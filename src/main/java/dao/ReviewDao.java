@@ -15,7 +15,7 @@ import tool.Dao;
 public class ReviewDao extends Dao {
 
 	// ユーザーが口コミ一覧を取得
-	public List<Review> getReviewsByUserId(int userId) throws Exception {
+	public List<Review> getReviewsByUserId(int userId) throws SQLException {
 		String sql = "select r.review_id, r.comment, r.created_at, r.property_id, r.user_id ,p.name as property_name "
 					+ "from reviews r "
 					+ "join properties p on r.property_id = p.property_id "
@@ -37,11 +37,13 @@ public class ReviewDao extends Dao {
 				}
 				return reviews;
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
 	// 物件コードにて口コミ一覧を取得
-	public List<Review> getReviews(int propertyId) throws Exception {
+	public List<Review> getReviews(int propertyId) throws SQLException {
 		String sql = "select * from reviews where property_id = ? order by created_at desc ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -60,6 +62,8 @@ public class ReviewDao extends Dao {
 				}
 				return reviews;
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
@@ -78,7 +82,7 @@ public class ReviewDao extends Dao {
 	    }
 	}
 	
-	public int insertReview(Review review, int userId, int propertyId) throws Exception {
+	public int insertReview(Review review, int userId, int propertyId) throws SQLException {
 		String sql = "insert into reviews (comment,user_id,property_id) values(?,?,?) ";
 
 		try (Connection con = getConnection();
@@ -91,6 +95,8 @@ public class ReviewDao extends Dao {
 			int line = st.executeUpdate();
 
 			return line;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 

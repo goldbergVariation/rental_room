@@ -3,17 +3,20 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.naming.NamingException;
+
 import bean.Property;
 import tool.Dao;
 
-public class PropertyDao extends Dao{
-	
+public class PropertyDao extends Dao {
+
 	// 物件再開停止
-	public boolean republishProperty(int id) throws Exception {
+	public boolean republishProperty(int id) throws SQLException {
 		String sql = "update properties set status='空室' where property_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -21,11 +24,13 @@ public class PropertyDao extends Dao{
 
 			int line = st.executeUpdate();
 			return line > 0 ? true : false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
 	// 物件掲載停止
-	public boolean stopProperty(int id) throws Exception {
+	public boolean stopProperty(int id) throws SQLException {
 		String sql = "update properties set status='掲載停止' where property_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -33,11 +38,13 @@ public class PropertyDao extends Dao{
 
 			int line = st.executeUpdate();
 			return line > 0 ? true : false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
 	// 物件登録
-	public boolean insertProperty(Property property) throws Exception {
+	public boolean insertProperty(Property property) throws SQLException {
 		String sql = "insert into properties (name, price, layout, pet, info, image_name, city, address) values (?,?,?,?,?,?,?,?) ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -53,11 +60,13 @@ public class PropertyDao extends Dao{
 			int line = st.executeUpdate();
 
 			return line > 0 ? true : false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
-	
+
 	// 物件詳細表示
-	public Property getPropertyInfo(int id) throws Exception {
+	public Property getPropertyInfo(int id) throws SQLException {
 		String sql = "select * from properties where property_id = ? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -80,12 +89,13 @@ public class PropertyDao extends Dao{
 				}
 				return null;
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
-	
-	
+
 	// 物件検索（物件が空室のみ取得）
-	public List<Property> searchPropertiesVacant(int priceNum, String[] layouts, int cityNum) throws Exception {
+	public List<Property> searchPropertiesVacant(int priceNum, String[] layouts, int cityNum) throws SQLException {
 		// 物件検索の基本SQL文
 		String sql = "select * from properties where 1=1 and status='空室' ";
 
@@ -159,10 +169,13 @@ public class PropertyDao extends Dao{
 				properties.add(property);
 			}
 			return properties;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
+
 	// 物件検索（管理者用）
-	public List<Property> searchPropertiesForManager(int priceNum, String[] layouts, int cityNum) throws Exception {
+	public List<Property> searchPropertiesForManager(int priceNum, String[] layouts, int cityNum) throws SQLException {
 		// 物件検索の基本SQL文
 		String sql = "select * from properties where 1=1 ";
 
@@ -236,6 +249,8 @@ public class PropertyDao extends Dao{
 				properties.add(property);
 			}
 			return properties;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 }

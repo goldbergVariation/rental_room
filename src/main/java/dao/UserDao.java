@@ -14,7 +14,7 @@ import tool.Dao;
 
 public class UserDao extends Dao {
 
-	public User getUser(String loginId) throws Exception {
+	public User getUser(String loginId) throws SQLException {
 		String sql = "SELECT * FROM users where user_login_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -37,10 +37,12 @@ public class UserDao extends Dao {
 					return null;
 				}
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
-	public User getUser(int id) throws Exception {
+	public User getUser(int id) throws SQLException {
 		String sql = "SELECT * FROM users where user_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -61,6 +63,8 @@ public class UserDao extends Dao {
 					return null;
 				}
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
@@ -92,7 +96,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public boolean insertUser(User user) throws Exception {
+	public boolean insertUser(User user) throws SQLException {
 		String sql = "insert into users(user_login_id,user_nickname,user_password, user_email)values(?,?,?,?)";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -103,10 +107,12 @@ public class UserDao extends Dao {
 			int line = st.executeUpdate();
 
 			return line > 0 ? true :false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
-	public User getUser(String loginId, String password, String nickname) throws Exception {
+	public User getUser(String loginId, String password, String nickname) throws SQLException {
 
 		List<User> list = new ArrayList<>();
 		String sql = "SELECT * FROM users where user_login_id=? and user_password=? and user_nickname=? ";
@@ -136,10 +142,12 @@ public class UserDao extends Dao {
 					return null;
 				}
 			}
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 
-	public boolean cancelUser(int userId) throws Exception {
+	public boolean cancelUser(int userId) throws SQLException {
 
 		String sql = "UPDATE users SET user_status = '退会済' WHERE user_id = ?";
 
@@ -148,6 +156,8 @@ public class UserDao extends Dao {
 			int result = st.executeUpdate();
 			// 0より大きければture、小さければfalse
 			return result > 0 ? true : false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
 		}
 	}
 

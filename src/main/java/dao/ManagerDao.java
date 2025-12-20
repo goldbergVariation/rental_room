@@ -98,7 +98,6 @@ public class ManagerDao extends Dao {
 
 	// フォームから入力されたID、パスワードをデーターベースのManagersテーブルに入れるメソッド
 	public boolean insertManager(Manager manager) throws SQLException {
-
 		String sql = "insert into managers (manager_login_id, manager_nickname, manager_password, manager_email) values(?,?,?,?) ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
