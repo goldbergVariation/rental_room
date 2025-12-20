@@ -9,6 +9,7 @@
 /target/
 /bin/
 /build/
+/src/main/java/tool/Dao.java
 .project
 *.log
 *.env
