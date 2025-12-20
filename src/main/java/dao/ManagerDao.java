@@ -12,7 +12,7 @@ import tool.Dao;
 
 public class ManagerDao extends Dao {
 
-	public Manager getManager(String loginId) throws SQLException {
+	public Manager getManager(String loginId) throws NamingException, SQLException {
 		String sql = "SELECT * FROM managers where manager_login_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -40,7 +40,7 @@ public class ManagerDao extends Dao {
 	}
 
 	// 管理者のログインIDで、データーベースに管理者情報があるか探すメソッド
-	public String getManagerLoginId(String loginId) throws SQLException {
+	public String getManagerLoginId(String loginId) throws NamingException, SQLException {
 		String sql = "SELECT * FROM managers where manager_login_id=?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -68,7 +68,7 @@ public class ManagerDao extends Dao {
 		}
 	}
 
-	public boolean isEmail(String email) throws SQLException {
+	public boolean isEmail(String email) throws NamingException, SQLException {
 		String sql = "SELECT * FROM managers where manager_email =?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -82,7 +82,7 @@ public class ManagerDao extends Dao {
 		}
 	}
 
-	public boolean isLoginId(String loginId) throws SQLException {
+	public boolean isLoginId(String loginId) throws NamingException, SQLException {
 		String sql = "SELECT * FROM managers where manager_login_id=?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -97,7 +97,7 @@ public class ManagerDao extends Dao {
 	}
 
 	// フォームから入力されたID、パスワードをデーターベースのManagersテーブルに入れるメソッド
-	public boolean insertManager(Manager manager) throws SQLException {
+	public boolean insertManager(Manager manager) throws NamingException, SQLException {
 		String sql = "insert into managers (manager_login_id, manager_nickname, manager_password, manager_email) values(?,?,?,?) ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {

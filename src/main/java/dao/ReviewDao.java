@@ -15,7 +15,7 @@ import tool.Dao;
 public class ReviewDao extends Dao {
 
 	// ユーザーが口コミ一覧を取得
-	public List<Review> getReviewsByUserId(int userId) throws SQLException {
+	public List<Review> getReviewsByUserId(int userId) throws NamingException, SQLException {
 		String sql = "select r.review_id, r.comment, r.created_at, r.property_id, r.user_id ,p.name as property_name "
 					+ "from reviews r "
 					+ "join properties p on r.property_id = p.property_id "
@@ -43,7 +43,7 @@ public class ReviewDao extends Dao {
 	}
 
 	// 物件コードにて口コミ一覧を取得
-	public List<Review> getReviews(int propertyId) throws SQLException {
+	public List<Review> getReviews(int propertyId) throws NamingException, SQLException {
 		String sql = "select * from reviews where property_id = ? order by created_at desc ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -67,7 +67,7 @@ public class ReviewDao extends Dao {
 		}
 	}
 
-	public boolean deleteReview(int reviewId) throws SQLException {
+	public boolean deleteReview(int reviewId) throws NamingException, SQLException {
 	    String sql = "DELETE FROM reviews WHERE review_id = ?";
 
 	    try (Connection con = getConnection();
@@ -82,7 +82,7 @@ public class ReviewDao extends Dao {
 	    }
 	}
 	
-	public int insertReview(Review review, int userId, int propertyId) throws SQLException {
+	public int insertReview(Review review, int userId, int propertyId) throws NamingException, SQLException {
 		String sql = "insert into reviews (comment,user_id,property_id) values(?,?,?) ";
 
 		try (Connection con = getConnection();

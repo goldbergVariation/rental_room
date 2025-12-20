@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -14,8 +12,8 @@ import tool.Dao;
 
 public class UserDao extends Dao {
 
-	public User getUser(String loginId) throws SQLException {
-		String sql = "SELECT * FROM users where user_login_id=? ";
+	public User getUser(String loginId) throws NamingException, SQLException {
+		String sql = "SELECT:: * FROM users where user_login_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
@@ -42,7 +40,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public User getUser(int id) throws SQLException {
+	public User getUser(int id) throws NamingException, SQLException {
 		String sql = "SELECT * FROM users where user_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -68,7 +66,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public boolean isLoginId(String loginId) throws SQLException {
+	public boolean isLoginId(String loginId) throws NamingException, SQLException {
 		String sql = "SELECT * FROM users where user_login_id=?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -82,7 +80,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public boolean isEmail(String email) throws SQLException {
+	public boolean isEmail(String email) throws NamingException, SQLException {
 		String sql = "SELECT * FROM users where user_email =?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -96,7 +94,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public boolean insertUser(User user) throws SQLException {
+	public boolean insertUser(User user) throws NamingException, SQLException {
 		String sql = "insert into users(user_login_id,user_nickname,user_password, user_email)values(?,?,?,?)";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -112,9 +110,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public User getUser(String loginId, String password, String nickname) throws SQLException {
-
-		List<User> list = new ArrayList<>();
+	public User getUser(String loginId, String password, String nickname) throws NamingException, SQLException {
 		String sql = "SELECT * FROM users where user_login_id=? and user_password=? and user_nickname=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -147,8 +143,7 @@ public class UserDao extends Dao {
 		}
 	}
 
-	public boolean cancelUser(int userId) throws SQLException {
-
+	public boolean cancelUser(int userId) throws NamingException, SQLException {
 		String sql = "UPDATE users SET user_status = '退会済' WHERE user_id = ?";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql)) {

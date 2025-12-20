@@ -16,7 +16,7 @@ import tool.Dao;
 public class PropertyDao extends Dao {
 
 	// 物件再開停止
-	public boolean republishProperty(int id) throws SQLException {
+	public boolean republishProperty(int id) throws NamingException, SQLException {
 		String sql = "update properties set status='空室' where property_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -30,7 +30,7 @@ public class PropertyDao extends Dao {
 	}
 
 	// 物件掲載停止
-	public boolean stopProperty(int id) throws SQLException {
+	public boolean stopProperty(int id) throws NamingException, SQLException {
 		String sql = "update properties set status='掲載停止' where property_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -44,7 +44,7 @@ public class PropertyDao extends Dao {
 	}
 
 	// 物件登録
-	public boolean insertProperty(Property property) throws SQLException {
+	public boolean insertProperty(Property property) throws NamingException, SQLException {
 		String sql = "insert into properties (name, price, layout, pet, info, image_name, city, address) values (?,?,?,?,?,?,?,?) ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -66,7 +66,7 @@ public class PropertyDao extends Dao {
 	}
 
 	// 物件詳細表示
-	public Property getPropertyInfo(int id) throws SQLException {
+	public Property getPropertyInfo(int id) throws NamingException, SQLException {
 		String sql = "select * from properties where property_id = ? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
@@ -95,7 +95,7 @@ public class PropertyDao extends Dao {
 	}
 
 	// 物件検索（物件が空室のみ取得）
-	public List<Property> searchPropertiesVacant(int priceNum, String[] layouts, int cityNum) throws SQLException {
+	public List<Property> searchPropertiesVacant(int priceNum, String[] layouts, int cityNum) throws NamingException, SQLException {
 		// 物件検索の基本SQL文
 		String sql = "select * from properties where 1=1 and status='空室' ";
 
@@ -175,7 +175,7 @@ public class PropertyDao extends Dao {
 	}
 
 	// 物件検索（管理者用）
-	public List<Property> searchPropertiesForManager(int priceNum, String[] layouts, int cityNum) throws SQLException {
+	public List<Property> searchPropertiesForManager(int priceNum, String[] layouts, int cityNum) throws NamingException, SQLException {
 		// 物件検索の基本SQL文
 		String sql = "select * from properties where 1=1 ";
 
