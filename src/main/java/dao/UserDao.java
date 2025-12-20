@@ -13,7 +13,7 @@ import tool.Dao;
 public class UserDao extends Dao {
 
 	public User getUser(String loginId) throws NamingException, SQLException {
-		String sql = "SELECT:: * FROM users where user_login_id=? ";
+		String sql = "SELECT * FROM users where user_login_id=? ";
 
 		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
 			st.setString(1, loginId);
