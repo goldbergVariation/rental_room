@@ -6,6 +6,7 @@
 /src/main/webapp/WEB-INF/classes/
 /src/main/webapp/WEB-INF/lib/
 /.metadata/
+/src/main/java/tool/Dao.java
 /target/
 /bin/
 /build/
