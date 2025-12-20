@@ -188,15 +188,18 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 
 ---
 
-##  今後の改善予定（Future Work）
+##  今後の改善予定
 
 ```
 物件検索の種類とソートの強化
-口コミの編集・削除
-ログイン履歴の保持	
-物件のお気に入り保存
+管理者による口コミの削除
+ログイン履歴の保持・表示	
+利用者による物件のお気に入り保存
+
+※ developブランチにて作成済
+ログインパスワードをハッシュ化してデータベースに保存
 利用者によるレビュー一覧表示
-物件情報のインポートとエクスポート
+利用者による口コミの削除
 ```
 
 ##  Screenshots
@@ -240,7 +243,3 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 <img width="700" height="457" alt="ユースケース図" src="https://github.com/user-attachments/assets/d1aed35d-c192-4b78-94d6-d86fcfa78ddb" />
 
 </details>
-
-
-
-
