@@ -259,7 +259,7 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 
 ### ユースケース図  
 
-<img width="1021" height="664" alt="ユースケース図" src="https://github.com/user-attachments/assets/d9e611d9-7b11-4755-be07-d22d3925fd1c" />
+<img width="720"  alt="ユースケース図" src="https://github.com/user-attachments/assets/d9e611d9-7b11-4755-be07-d22d3925fd1c" />
 
 
 </details>
