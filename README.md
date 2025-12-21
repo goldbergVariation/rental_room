@@ -251,7 +251,7 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 </details>
 
 <details>
-<summary>▶ ER図 / ユースケース図</summary>
+<summary>▶ ユースケース図 / ER図</summary>
 
 ### ユースケース図  
 
