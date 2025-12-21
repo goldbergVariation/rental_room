@@ -253,13 +253,12 @@ psql -h <Renderホスト> -U <ユーザー名> -d rental_room -f dump_postgres.s
 <details>
 <summary>▶ ER図 / ユースケース図</summary>
 
-### ER図  
-<img width="720" alt="ER図" src="https://github.com/user-attachments/assets/b465b9a7-7510-4984-be5b-7e99843520c4" />
-
 ### ユースケース図  
 
 <img width="720"  alt="ユースケース図" src="https://github.com/user-attachments/assets/d9e611d9-7b11-4755-be07-d22d3925fd1c" />
 
+### ER図  
+<img width="720" alt="ER図" src="https://github.com/user-attachments/assets/b465b9a7-7510-4984-be5b-7e99843520c4" />
 
 </details>
 
