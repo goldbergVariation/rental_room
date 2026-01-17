@@ -15,6 +15,20 @@ import tool.Dao;
 
 public class PropertyDao extends Dao {
 
+	// 物件削除
+	public boolean deleteProperty(int id) throws NamingException, SQLException {
+		String sql = "delete from properties where property_id=? ";
+
+		try (Connection con = getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
+			st.setInt(1, id);
+
+			int line = st.executeUpdate();
+			return line > 0 ? true : false;
+		} catch (NamingException e) {
+			throw new SQLException("データソースの取得に失敗しました", e);
+		}
+	}
+
 	// 物件再開停止
 	public boolean republishProperty(int id) throws NamingException, SQLException {
 		String sql = "update properties set status='空室' where property_id=? ";

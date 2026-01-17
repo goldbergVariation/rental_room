@@ -61,6 +61,14 @@
 		</form>
 	</c:if>
 
+	<%--物件を削除 --%>
+	<c:if test="${not empty sessionScope.account and sessionScope.account.role == '管理者'}">
+		<form action="/rental_room/manager/PropertyDeleteConfirm.action" method="post">
+			<input type="hidden" name="id" value="<c:out value='${property.id}'/>">
+			<table  class="center-table"><tr><td style="width:80px; color:red"><h2>この物件の削除する</h2></td><td style="width:80px"><input type="submit" value="物件削除"></td></tr></table>
+		</form>
+	</c:if>
+
 	<br>
 	<img src="/rental_room/images/${property.imageName}" width="350" alt="not found">
 
