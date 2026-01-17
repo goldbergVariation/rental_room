@@ -44,35 +44,19 @@
 <main class="main-content">
 	<h1><c:out value="${property.name}"/></h1>
 
-	<% //管理者のみ物件掲載ステータスを変更可能  %>
-	<!--掲載停止に変更 -->
+	<%-- 管理者のみ物件掲載ステータスを変更可能  --%>
+	<%--掲載停止に変更 --%>
 	<c:if test="${not empty sessionScope.account and sessionScope.account.role == '管理者' and property.status == '空室'}">
-		<form action="/rental_room/manager/property_stop_confirm.jsp" method="post">
+		<form action="/rental_room/manager/PropertyStopConfirm.action" method="post">
 			<input type="hidden" name="id" value="<c:out value='${property.id}'/>">
-			<input type="hidden" name="name" value="<c:out value='${property.name}'/>"> 
-			<input type="hidden" name="imageName" value="<c:out value='${property.imageName}'/>"> 
-			<input type="hidden" name="layout" value="<c:out value='${property.layout}'/>"> 
-			<input type="hidden" name="price" value="<c:out value='${property.price}'/>"> 
-			<input type="hidden" name="info" value="<c:out value='${property.info}'/>"> 
-			<input type="hidden" name="pet" value="<c:out value='${property.pet}'/>"> 
-			<input type="hidden" name="city" value="<c:out value='${property.city}'/>"> 
-			<input type="hidden" name="address" value="<c:out value='${property.address}'/>"> 
 			<table  class="center-table"><tr><td style="width:150px"><h2>この物件の掲載を停止する</h2></td><td style="width:80px"><input type="submit" value="物件掲載停止"></td></tr></table>
 		</form>
 	</c:if>
 
-	<!--再掲載に変更 -->
+	<%--再掲載に変更 --%>
 	<c:if test="${not empty sessionScope.account and sessionScope.account.role == '管理者' and property.status == '掲載停止'}">
-		<form action="/rental_room/manager/property_republish_confirm.jsp" method="post">
+		<form action="/rental_room/manager/PropertyRepublishConfirm.action" method="post">
 			<input type="hidden" name="id" value="<c:out value='${property.id}'/>">
-			<input type="hidden" name="name" value="<c:out value='${property.name}'/>"> 
-			<input type="hidden" name="imageName" value="<c:out value='${property.imageName}'/>"> 
-			<input type="hidden" name="layout" value="<c:out value='${property.layout}'/>"> 
-			<input type="hidden" name="price" value="<c:out value='${property.price}'/>"> 
-			<input type="hidden" name="info" value="<c:out value='${property.info}'/>"> 
-			<input type="hidden" name="pet" value="<c:out value='${property.pet}'/>"> 
-			<input type="hidden" name="city" value="<c:out value='${property.city}'/>"> 
-			<input type="hidden" name="address" value="<c:out value='${property.address}'/>"> 
 			<table  class="center-table"><tr><td style="width:150px"><h2>この物件の掲載を再開する</h2></td><td style="width:80px"><input type="submit" value="物件掲載再開"></td></tr></table>
 		</form>
 	</c:if>
@@ -81,7 +65,7 @@
 	<img src="/rental_room/images/${property.imageName}" width="350" alt="not found">
 
 	<table  class="center-table">
-		<% //管理者のみ物件掲載ステータスを表示  %>
+		<%-- 管理者のみ物件掲載ステータスを表示  --%>
  		<c:if test="${not empty sessionScope.account and sessionScope.account.role == '管理者'}">
 			<tr> <th>ステータス</th>
 				<c:choose>
@@ -104,8 +88,7 @@
 <br>
 
 	<%--ここから口コミ登録用追記 --%>
-
-    <!-- 利用者 -->
+    <%-- 利用者 --%>
 	<c:if test="${not empty sessionScope.account and sessionScope.account.role == '利用者'}">
     	<form action="/rental_room/user/user_review.jsp" method="get">
         	<input type="hidden" name="propertyId" value="${property.id}">
@@ -115,7 +98,6 @@
 
 		
 	<%--口コミ登録ボタンの追記終わり --%>	
-
 	<c:if test="${not empty reviews}">
 		<h2>物件周辺情報 利用者口コミ</h2>
 		
@@ -126,9 +108,7 @@
 			</c:forEach>
 		</table>
 	</c:if>
-	<br>
-	<a href="/rental_room/guest/top.jsp" class="btn">検索へ戻る</a>
-    <br>
+	<br> <a href="/rental_room/guest/top.jsp" class="btn">検索へ戻る</a> <br>
 </main>
 
 <jsp:include page="/common/footer.jsp" />

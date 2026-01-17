@@ -32,35 +32,35 @@
 <main class="main-content">
 	<h1>物件掲載再開の確認</h1>
 
-	<img src="/rental_room/images/${param.imageName}" width="250" alt="not found">
+	<img src="/rental_room/images/${property.imageName}" width="250" alt="not found">
 		<table class="center-table">
 		<tr>
 			<th>物件名</th>
-			<td><c:out value="${param.name}"/></td>
+			<td><c:out value="${property.name}"/></td>
 		</tr>
 		<tr>
 			<th>賃料(共益費込)</th>
-			<td><fmt:formatNumber value="${param.price}" pattern="#,###" />円</td>
+			<td><fmt:formatNumber value="${property.price}" pattern="#,###" />円</td>
 		</tr>
 		<tr>
 			<th>間取り</th>
-			<td><c:out value="${param.layout}"/></td>
+			<td><c:out value="${property.layout}"/></td>
 		</tr>
 		<tr>
 			<th>地区</th>
-			<td><c:out value="${param.city}"/></td>
+			<td><c:out value="${property.city}"/></td>
 		</tr>
 		<tr>
 			<th>住所</th>
-			<td><c:out value="${param.address}"/></td>
+			<td><c:out value="${property.address}"/></td>
 		</tr>
 		<tr>
 			<th>ペット</th>
-			<td><c:out value="${param.pet}"/></td>
+			<td><c:out value="${property.pet}"/></td>
 		</tr>
 		<tr>
 			<th>詳細</th>
-			<td class="info" style="text-align:left;"><c:out value="${param.info}"/></td>
+			<td class="info" style="text-align:left;"><c:out value="${property.info}"/></td>
 		</tr>
 	</table>
 
@@ -70,7 +70,7 @@
 	</h2>
 	
 	<form action="/rental_room/manager/PropertyRepublish.action" method="post">
-			<input type="hidden" name="id" value="${param.id}"> 
+			<input type="hidden" name="id" value="${property.id}"> 
 			<input type="submit" value="はい">
 	</form>
 	<br>
