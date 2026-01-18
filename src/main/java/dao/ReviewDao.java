@@ -67,6 +67,15 @@ public class ReviewDao extends Dao {
 		}
 	}
 
+	public int deleteReviewByPropertyId(Connection con, int propertyId) throws NamingException, SQLException {
+	    String sql = "DELETE FROM reviews WHERE property_id = ?";
+
+	    try (PreparedStatement st = con.prepareStatement(sql)) {
+	        st.setInt(1, propertyId);
+	        return st.executeUpdate();
+	    }
+	}
+
 	public boolean deleteReview(int reviewId) throws NamingException, SQLException {
 	    String sql = "DELETE FROM reviews WHERE review_id = ?";
 

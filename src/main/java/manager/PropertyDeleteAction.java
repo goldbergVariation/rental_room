@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.PropertyService;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,15 +19,13 @@ public class PropertyDeleteAction extends Action {
 				return "/common/system_error.jsp";
 			}
 			int id = Integer.parseInt(idStr.trim());
-
-			PropertyDao propertyDao = new PropertyDao();
-			boolean result = propertyDao.deleteProperty(id);
 			
-			if(result) {
-				return "/manager/property_delete_complete.jsp";
-			}else {
-				return "/common/system_error.jsp";
-			}
+			// 物件(物件コードid)についている口コミも含め削除する
+
+			PropertyService propertyService = new PropertyService();
+			propertyService.deleteProperty(id);
+			return "/manager/property_delete_complete.jsp";
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
